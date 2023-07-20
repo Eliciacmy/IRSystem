@@ -9,12 +9,14 @@ import org.apache.lucene.analysis.standard.StandardAnalyzer;
 import org.apache.lucene.document.Document;
 import org.apache.lucene.index.DirectoryReader;
 import org.apache.lucene.index.IndexReader;
+import org.apache.lucene.index.Term;
 import org.apache.lucene.queryparser.classic.MultiFieldQueryParser;
 import org.apache.lucene.queryparser.classic.QueryParser;
 import org.apache.lucene.search.DoubleValuesSource;
 import org.apache.lucene.search.IndexSearcher;
 import org.apache.lucene.search.Query;
 import org.apache.lucene.search.ScoreDoc;
+import org.apache.lucene.search.TermQuery;
 import org.apache.lucene.search.TopDocs;
 import org.apache.lucene.store.Directory;
 import org.apache.lucene.store.FSDirectory;
@@ -47,22 +49,38 @@ public class LuceneSearch {
 		queryParser.setDefaultOperator(QueryParser.Operator.AND);
 
 		// Parse the user query
-		Query query = queryParser.parse(queryText);
-		
-		// Compile an expression
-		//Expression expr = JavascriptCompiler.compile("sqrt(_score) + ln(boost)");
-		Expression expr = JavascriptCompiler.compile("_score * boost");
-		
-		// Bindings
-		SimpleBindings bindings = new SimpleBindings();
-		bindings.add("_score", DoubleValuesSource.SCORES);
-		bindings.add("boost", DoubleValuesSource.fromFloatField("boost"));
+        Query query = queryParser.parse(queryText);
 
-		FunctionScoreQuery q = new FunctionScoreQuery(query, expr.getDoubleValuesSource(bindings));
+     // Define the boosting queries and their boost values
+        Query boostQuery1 = new TermQuery(new Term("title", queryText));
+        float boostValue1 = 0.7f;
 
-		// Search the index
-		TopDocs hits = searcher.search(q, 50);
-		return hits;
+        Query boostQuery2 = new TermQuery(new Term("content", queryText));
+        float boostValue2 = 0.2f;
+        
+        Query boostQuery3 = new TermQuery(new Term("docurl", queryText));
+        float boostValue3 = 0.7f;
+
+        // Create FunctionScoreQuery with multiple boostByQuery
+        FunctionScoreQuery q = new FunctionScoreQuery(query, DoubleValuesSource.SCORES);
+        q = FunctionScoreQuery.boostByQuery(q, boostQuery1, boostValue1);
+        q = FunctionScoreQuery.boostByQuery(q, boostQuery2, boostValue2);
+        q = FunctionScoreQuery.boostByQuery(q, boostQuery3, boostValue3);
+        
+//        // Compile an expression
+//        //Expression expr = JavascriptCompiler.compile("sqrt(_score) + ln(boost)");
+//        Expression expr = JavascriptCompiler.compile("_score * boost");
+//
+//        // Bindings
+//        SimpleBindings bindings = new SimpleBindings();
+//        bindings.add("_score", DoubleValuesSource.SCORES);
+//        bindings.add("boost", DoubleValuesSource.fromFloatField("boost"));
+//
+//        FunctionScoreQuery q = new FunctionScoreQuery(query, expr.getDoubleValuesSource(bindings));
+
+        // Search the index
+        TopDocs hits = searcher.search(q, 50);
+        return hits;
 	}
 
 	public static JSONArray searchIndex(TopDocs hits, IndexSearcher searcher) throws IOException {
