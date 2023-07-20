@@ -51,6 +51,11 @@
 		    <artifactId>lucene-queryparser</artifactId>
 		    <version>9.6.0</version>
 		</dependency>
+		<dependency>
+		    <groupId>org.apache.lucene</groupId>
+		    <artifactId>lucene-expressions</artifactId>
+		    <version>9.6.0</version>
+		</dependency>
 	</dependencies>
   
   <build>

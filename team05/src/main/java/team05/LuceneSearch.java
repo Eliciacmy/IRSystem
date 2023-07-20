@@ -11,12 +11,17 @@ import org.apache.lucene.index.DirectoryReader;
 import org.apache.lucene.index.IndexReader;
 import org.apache.lucene.queryparser.classic.MultiFieldQueryParser;
 import org.apache.lucene.queryparser.classic.QueryParser;
+import org.apache.lucene.search.DoubleValuesSource;
 import org.apache.lucene.search.IndexSearcher;
 import org.apache.lucene.search.Query;
 import org.apache.lucene.search.ScoreDoc;
 import org.apache.lucene.search.TopDocs;
 import org.apache.lucene.store.Directory;
 import org.apache.lucene.store.FSDirectory;
+import org.apache.lucene.expressions.Expression;
+import org.apache.lucene.expressions.SimpleBindings;
+import org.apache.lucene.expressions.js.JavascriptCompiler;
+import org.apache.lucene.queries.function.FunctionScoreQuery;
 
 import org.json.JSONObject;
 import org.json.JSONArray;
@@ -43,9 +48,20 @@ public class LuceneSearch {
 
 		// Parse the user query
 		Query query = queryParser.parse(queryText);
+		
+		// Compile an expression
+		Expression expr = JavascriptCompiler.compile("sqrt(_score) + ln(popularity)");
+		//Expression expr = JavascriptCompiler.compile("_score * ln(popularity)");
+		
+		// Bindings
+		SimpleBindings bindings = new SimpleBindings();
+		bindings.add("_score", DoubleValuesSource.SCORES);
+		bindings.add("popularity", DoubleValuesSource.fromIntField("popularity"));
+
+		FunctionScoreQuery q = new FunctionScoreQuery(query, expr.getDoubleValuesSource(bindings));
 
 		// Search the index
-		TopDocs hits = searcher.search(query, 50);
+		TopDocs hits = searcher.search(q, 50);
 		return hits;
 	}
 
