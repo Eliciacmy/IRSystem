@@ -71,25 +71,25 @@ public class LuceneIndex {
 			bodyOptions.setIndexOptions(IndexOptions.DOCS_AND_FREQS_AND_POSITIONS_AND_OFFSETS);
 
 			for (String field : (Set<String>) object.keySet()) {
-				switch (field) {
-				case "docUrl":
-					Field urlField = new Field(field, (String) object.get(field).toString(), bodyOptions);
-					doc.add(urlField);
-					doc.add(new NumericDocValuesField("boost", Double.doubleToRawLongBits(1.0)));
-					break;
-				case "title":
-					Field titleField = new Field(field, (String) object.get(field).toString(), bodyOptions);
-					doc.add(titleField);
-					doc.add(new NumericDocValuesField("boost", Double.doubleToRawLongBits(3.0)));
-					break;
-				case "content":
-					Field contentField = new Field(field, (String) object.get(field).toString(), bodyOptions);
-					doc.add(contentField);
-					doc.add(new NumericDocValuesField("boost", Double.doubleToRawLongBits(2.0)));
-					break;
-				}
-				// doc.add(new Field(field, (String) object.get(field).toString(),
-				// bodyOptions));
+//				switch (field) {
+//				case "docUrl":
+//					Field urlField = new Field(field, (String) object.get(field).toString(), bodyOptions);
+//					doc.add(urlField);
+//					doc.add(new NumericDocValuesField("boost", Double.doubleToRawLongBits(1.0)));
+//					break;
+//				case "title":
+//					Field titleField = new Field(field, (String) object.get(field).toString(), bodyOptions);
+//					doc.add(titleField);
+//					doc.add(new NumericDocValuesField("boost", Double.doubleToRawLongBits(3.0)));
+//					break;
+//				case "content":
+//					Field contentField = new Field(field, (String) object.get(field).toString(), bodyOptions);
+//					doc.add(contentField);
+//					doc.add(new NumericDocValuesField("boost", Double.doubleToRawLongBits(2.0)));
+//					break;
+//				}
+				 doc.add(new Field(field, (String) object.get(field).toString(),
+				 bodyOptions));
 
 			}
 
