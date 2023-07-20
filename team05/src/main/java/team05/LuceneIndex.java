@@ -28,27 +28,26 @@ public class LuceneIndex {
 	private static final String indexDirectory = "indexedFiles/";
 	private static final String dirToBeIndexed = "scrapedData";
 
-
 	/**
 	 * JSON Parser
 	 */
 	public JSONArray parseJSONFile() throws IOException {
-		
-		  Path dir = Paths.get(dirToBeIndexed);
-		  
-		  try (DirectoryStream<Path> stream = Files.newDirectoryStream(dir, "*.json")) {
-		      for (Path p : stream) {
-		          InputStream jsonFile = new FileInputStream(p.toString());
-		          Reader readerJson = new InputStreamReader(jsonFile);
-		    
-		    // Parse the json file using simple-json library
-		    Object fileObjects = JSONValue.parse(readerJson);
-		    JSONArray arrayObjects = (JSONArray) fileObjects;
 
-		    return arrayObjects;
-		      }
-		  }
-		  return null;
+		Path dir = Paths.get(dirToBeIndexed);
+
+		try (DirectoryStream<Path> stream = Files.newDirectoryStream(dir, "*.json")) {
+			for (Path p : stream) {
+				InputStream jsonFile = new FileInputStream(p.toString());
+				Reader readerJson = new InputStreamReader(jsonFile);
+
+				// Parse the json file using simple-json library
+				Object fileObjects = JSONValue.parse(readerJson);
+				JSONArray arrayObjects = (JSONArray) fileObjects;
+
+				return arrayObjects;
+			}
+		}
+		return null;
 	}
 
 	/**
@@ -59,48 +58,47 @@ public class LuceneIndex {
 		Analyzer analyzer = new StandardAnalyzer();
 		IndexWriterConfig config = new IndexWriterConfig(analyzer);
 		IndexWriter indexWriter = new IndexWriter(FSDirectory.open(indexDir), config);
-		
+
 		JSONArray jsonObjects = parseJSONFile();
 
 		for (JSONObject object : (List<JSONObject>) jsonObjects) {
 			Document doc = new Document();
 			final FieldType bodyOptions = new FieldType();
-            bodyOptions.setStored(true);
-            bodyOptions.setStoreTermVectors(true);
-            bodyOptions.setTokenized(true);
-            bodyOptions.setIndexOptions(IndexOptions.DOCS_AND_FREQS_AND_POSITIONS_AND_OFFSETS);
-			
+			bodyOptions.setStored(true);
+			bodyOptions.setStoreTermVectors(true);
+			bodyOptions.setTokenized(true);
+			bodyOptions.setIndexOptions(IndexOptions.DOCS_AND_FREQS_AND_POSITIONS_AND_OFFSETS);
+
 			for (String field : (Set<String>) object.keySet()) {
-				switch(field) {
-					case "docUrl":
-						Field urlField = new Field(field, (String) object.get(field).toString(), bodyOptions);
-						doc.add(urlField);
-						doc.add(new StoredField("boost", 1.0f));
-						break;
-					case "title":
-						break;
-					case "content":
-						break;
-					
+				switch (field) {
+				case "docUrl":
+					Field urlField = new Field(field, (String) object.get(field).toString(), bodyOptions);
+					doc.add(urlField);
+					doc.add(new StoredField("boost", 1.0f));
+					break;
+				case "title":
+					break;
+				case "content":
+					break;
+
 				}
 				doc.add(new Field(field, (String) object.get(field).toString(), bodyOptions));
-						
-				
+
 			}
-			
+
 			try {
 				System.out.println(doc);
 				indexWriter.addDocument(doc);
 			} catch (IOException ex) {
 				System.err.println("Error adding documents to the index. " + ex.getMessage());
 			}
-			
+
 		}
-		
+
 		int numIndexed = indexWriter.numRamDocs();
-		
+
 		finish(indexWriter);
-		
+
 		return numIndexed;
 	}
 
@@ -115,7 +113,7 @@ public class LuceneIndex {
 			System.err.println("We had a problem closing the index: " + ex.getMessage());
 		}
 	}
-	
+
 	/**
 	 * Main function
 	 */

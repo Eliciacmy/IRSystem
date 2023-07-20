@@ -21,18 +21,10 @@ public class Servlet extends HttpServlet {
 
 		LuceneSearch search = new LuceneSearch();
 		String queryString = req.getQueryString();
-		IndexSearcher searcher = search.createSearcher();
-		
-		TopDocs topDocs = null;
-		try {
-			topDocs = search.searchInContent(queryString, searcher);
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+
 
 		try {
-			JSONArray result = search.searchIndex(topDocs, searcher);
+			JSONArray result = search.searchQuery(queryString);
 			String jsonResult = result.toString();
 			resp.setContentType("application/json");
 			resp.getWriter().write(jsonResult);
