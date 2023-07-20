@@ -70,7 +70,26 @@ public class LuceneIndex {
 			bodyOptions.setIndexOptions(IndexOptions.DOCS_AND_FREQS_AND_POSITIONS_AND_OFFSETS);
 
 			for (String field : (Set<String>) object.keySet()) {
-				doc.add(new Field(field, (String) object.get(field).toString(), bodyOptions));
+				switch (field) {
+				case "docUrl":
+					Field urlField = new Field(field, (String) object.get(field).toString(), bodyOptions);
+					doc.add(urlField);
+					doc.add(new StoredField("boost", 1.0f));
+					break;
+				case "title":
+					Field titleField = new Field(field, (String) object.get(field).toString(), bodyOptions);
+					doc.add(titleField);
+					doc.add(new StoredField("boost", 3.0f));
+					break;
+				case "content":
+					Field contentField = new Field(field, (String) object.get(field).toString(), bodyOptions);
+					doc.add(contentField);
+					doc.add(new StoredField("boost", 2.0f));
+					break;
+
+				}
+				//doc.add(new Field(field, (String) object.get(field).toString(), bodyOptions));
+
 			}
 
 			try {

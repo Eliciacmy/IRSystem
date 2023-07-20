@@ -50,13 +50,13 @@ public class LuceneSearch {
 		Query query = queryParser.parse(queryText);
 		
 		// Compile an expression
-		Expression expr = JavascriptCompiler.compile("sqrt(_score) + ln(popularity)");
-		//Expression expr = JavascriptCompiler.compile("_score * ln(popularity)");
+		//Expression expr = JavascriptCompiler.compile("sqrt(_score) + ln(boost)");
+		Expression expr = JavascriptCompiler.compile("_score * boost");
 		
 		// Bindings
 		SimpleBindings bindings = new SimpleBindings();
 		bindings.add("_score", DoubleValuesSource.SCORES);
-		bindings.add("popularity", DoubleValuesSource.fromIntField("popularity"));
+		bindings.add("boost", DoubleValuesSource.fromLongField("boost"));
 
 		FunctionScoreQuery q = new FunctionScoreQuery(query, expr.getDoubleValuesSource(bindings));
 
