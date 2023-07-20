@@ -18,9 +18,12 @@ import org.apache.lucene.search.TopDocs;
 import org.apache.lucene.store.Directory;
 import org.apache.lucene.store.FSDirectory;
 
+import org.json.JSONObject;
+import org.json.JSONArray;
+
 public class LuceneSearch {
 	
-	private static final String INDEX_DIR = "indexedFiles";
+	private static final String INDEX_DIR = "../../team05/indexedFiles";
     private static final String[] SEARCH_FIELDS = {"docurl", "title", "content"}; // Add your desired search fields here
 
     public static void main(String[] args) throws Exception {
@@ -44,6 +47,8 @@ public class LuceneSearch {
             Document d = searcher.doc(sd.doc);
             System.out.println("URL: " + d.get("docurl") + ", Title: " + d.get("title") + ", Score: " + sd.score);
         }
+        
+
     }
 
     private static String getUserInput() {
@@ -62,7 +67,7 @@ public class LuceneSearch {
         return searchQuery;
     }
 
-    private static TopDocs searchInContent(String textToFind, IndexSearcher searcher) throws Exception {
+    public static TopDocs searchInContent(String textToFind, IndexSearcher searcher) throws Exception {
         // Create search query parser
         Analyzer analyzer = new StandardAnalyzer();
         QueryParser queryParser = new MultiFieldQueryParser(SEARCH_FIELDS, analyzer);
@@ -75,8 +80,24 @@ public class LuceneSearch {
         TopDocs hits = searcher.search(query, 10);
         return hits;
     }
+    
+    public JSONArray searchIndex(TopDocs hits, IndexSearcher searcher) throws IOException {
+        JSONArray result = new JSONArray();
+		
+        for (int i = 0; i < hits.scoreDocs.length; i++) {
+            JSONObject jsonObject = new JSONObject();
+            int docId = hits.scoreDocs[i].doc;
+            Document d = searcher.doc(docId);
+            jsonObject.put("Title", d.get("title"));
+            jsonObject.put("Url", d.get("docurl"));
+            jsonObject.put("Content", d.get("content"));
+            result.put(jsonObject);            
+        }
+        
+        return result;
+    }
 
-    private static IndexSearcher createSearcher() throws IOException {
+    public static IndexSearcher createSearcher() throws IOException {
         Directory dir = FSDirectory.open(Paths.get(INDEX_DIR));
         IndexReader reader = DirectoryReader.open(dir);
         IndexSearcher searcher = new IndexSearcher(reader);
