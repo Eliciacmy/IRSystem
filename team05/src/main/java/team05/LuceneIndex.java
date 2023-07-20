@@ -5,6 +5,7 @@ import org.apache.lucene.analysis.standard.StandardAnalyzer;
 import org.apache.lucene.document.Document;
 import org.apache.lucene.document.Field;
 import org.apache.lucene.document.FieldType;
+import org.apache.lucene.document.NumericDocValuesField;
 import org.apache.lucene.document.StoredField;
 import org.apache.lucene.index.IndexOptions;
 import org.apache.lucene.index.IndexWriter;
@@ -74,21 +75,21 @@ public class LuceneIndex {
 				case "docUrl":
 					Field urlField = new Field(field, (String) object.get(field).toString(), bodyOptions);
 					doc.add(urlField);
-					doc.add(new StoredField("boost", 1.0f));
+					doc.add(new NumericDocValuesField("boost", Double.doubleToRawLongBits(1.0)));
 					break;
 				case "title":
 					Field titleField = new Field(field, (String) object.get(field).toString(), bodyOptions);
 					doc.add(titleField);
-					doc.add(new StoredField("boost", 3.0f));
+					doc.add(new NumericDocValuesField("boost", Double.doubleToRawLongBits(3.0)));
 					break;
 				case "content":
 					Field contentField = new Field(field, (String) object.get(field).toString(), bodyOptions);
 					doc.add(contentField);
-					doc.add(new StoredField("boost", 2.0f));
+					doc.add(new NumericDocValuesField("boost", Double.doubleToRawLongBits(2.0)));
 					break;
-
 				}
-				//doc.add(new Field(field, (String) object.get(field).toString(), bodyOptions));
+				// doc.add(new Field(field, (String) object.get(field).toString(),
+				// bodyOptions));
 
 			}
 

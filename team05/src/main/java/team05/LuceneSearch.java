@@ -56,7 +56,7 @@ public class LuceneSearch {
 		// Bindings
 		SimpleBindings bindings = new SimpleBindings();
 		bindings.add("_score", DoubleValuesSource.SCORES);
-		bindings.add("boost", DoubleValuesSource.fromLongField("boost"));
+		bindings.add("boost", DoubleValuesSource.fromFloatField("boost"));
 
 		FunctionScoreQuery q = new FunctionScoreQuery(query, expr.getDoubleValuesSource(bindings));
 

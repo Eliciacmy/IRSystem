@@ -3,7 +3,8 @@
   <groupId>team05</groupId>
   <artifactId>team05</artifactId>
   <version>0.0.1-SNAPSHOT</version>
-  <packaging>war</packaging>
+  <packaging>
+		war</packaging>
   <name>IRSystemTeam05</name>
   
   	<properties>
@@ -13,53 +14,68 @@
 	
 	<dependencies>
 		<dependency>
-			<groupId>javax.servlet</groupId>
+			<groupId>
+				javax.servlet</groupId>
 			<artifactId>javax.servlet-api</artifactId>
 			<version>3.1.0</version>
-			<scope>provided</scope>
+			<scope>
+				provided</scope>
 		</dependency>
 		<dependency>
 			<groupId>org.json</groupId>
 			<artifactId>json</artifactId>
-			<version>LATEST</version>
+			<version>
+				LATEST</version>
 		</dependency>
 		
 		<dependency>
 		    <groupId>edu.mit</groupId>
 		    <artifactId>jwi</artifactId>
-		    <version>2.2.3</version>
+		    <version>
+				2.2.3</version>
 		</dependency>
 		
 		<dependency>
 		    <groupId>com.googlecode.json-simple</groupId>
-		    <artifactId>json-simple</artifactId>
+		    <artifactId>
+				json-simple</artifactId>
 		    <version>1.1.1</version>
 		</dependency>
 		
 		<dependency>
-		    <groupId>org.apache.lucene</groupId>
+		    <groupId>
+				org.apache.lucene</groupId>
 		    <artifactId>lucene-analysis-common</artifactId>
-		    <version>9.6.0</version>
+		    <version>
+				9.6.0</version>
 		</dependency>
 		<dependency>
 		    <groupId>org.apache.lucene</groupId>
-		    <artifactId>lucene-core</artifactId>
+		    <artifactId>
+				lucene-core</artifactId>
 		    <version>9.6.0</version>
 		</dependency>
 		<dependency>
-		    <groupId>org.apache.lucene</groupId>
+		    <groupId>
+				org.apache.lucene</groupId>
 		    <artifactId>lucene-queryparser</artifactId>
 		    <version>9.6.0</version>
 		</dependency>
 		<dependency>
-		    <groupId>org.apache.lucene</groupId>
+		    <groupId>
+				org.apache.lucene</groupId>
 		    <artifactId>lucene-expressions</artifactId>
 		    <version>9.6.0</version>
 		</dependency>
 	</dependencies>
-  
-  <build>
+
+	<build>
 		<plugins>
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>exec-maven-plugin</artifactId>
+				<version>3.1.0</version>
+			</plugin>
 	   <plugin>
 		    <artifactId>
 					maven-compiler-plugin</artifactId>
@@ -70,9 +86,11 @@
 					maven-war-plugin</artifactId>
 			<version>3.3.2</version>
 		    <configuration>
-				<outputDirectory>..\tomcat-8.5\webapps</outputDirectory>
+				<outputDirectory>
+						..\tomcat-8.5\webapps</outputDirectory>
 				<warName>React</warName>
-				<source>1.8</source>
+				<source>
+						1.8</source>
         		<target>1.8</target>
 				</configuration>
 			</plugin>
