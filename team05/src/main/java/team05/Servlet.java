@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import org.apache.lucene.search.IndexSearcher;
 import org.apache.lucene.search.TopDocs;
 import org.json.JSONArray;
+import org.json.JSONObject;
 
 @WebServlet("/Search")
 public class Servlet extends HttpServlet {
@@ -28,6 +29,12 @@ public class Servlet extends HttpServlet {
 			String jsonResult = result.toString();
 			resp.setContentType("application/json");
 			resp.getWriter().write(jsonResult);
+			
+//			for (int i = 0; i < result.length(); i++) {
+//		    JSONObject resultObject = result.getJSONObject(i);
+//		    String title = resultObject.getString("Title");
+//		    System.out.println(title);
+//		}
 
 		} catch (Exception e) {
 			resp.getWriter().write(e.toString());
