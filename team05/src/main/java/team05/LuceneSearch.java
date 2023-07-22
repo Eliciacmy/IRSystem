@@ -1,22 +1,9 @@
 package team05;
 
-import edu.mit.jwi.Dictionary;
-import edu.mit.jwi.IDictionary;
-import edu.mit.jwi.item.IIndexWord;
-import edu.mit.jwi.item.ISynset;
-import edu.mit.jwi.item.IWord;
-import edu.mit.jwi.item.IWordID;
-import edu.mit.jwi.item.POS;
-
-import java.io.File;
 import java.io.FileReader;
 import java.io.BufferedReader;
 import java.io.IOException;
-import java.net.URL;
-import java.io.StringReader;
 import java.net.URLDecoder;
-import java.nio.charset.StandardCharsets;
-import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.HashSet;
 import java.util.List;
@@ -42,10 +29,6 @@ import org.apache.lucene.search.TermQuery;
 import org.apache.lucene.search.TopDocs;
 import org.apache.lucene.store.Directory;
 import org.apache.lucene.store.FSDirectory;
-
-import org.apache.lucene.analysis.synonym.SynonymMap;
-import org.apache.lucene.analysis.synonym.WordnetSynonymParser;
-import org.apache.lucene.analysis.synonym.SynonymMap.Builder;
 
 import org.json.JSONObject;
 import org.json.JSONArray;
