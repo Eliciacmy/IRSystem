@@ -2,14 +2,7 @@ package team05;
 
 import java.io.IOException;
 import java.net.URLDecoder;
-import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.util.Scanner;
-import java.util.Set;
-import java.util.HashSet;
-import java.util.Dictionary;
-import java.util.List;
-import java.util.ArrayList;
 
 import org.apache.lucene.analysis.Analyzer;
 import org.apache.lucene.analysis.standard.StandardAnalyzer;
@@ -22,20 +15,13 @@ import org.apache.lucene.queryparser.classic.QueryParser;
 import org.apache.lucene.search.BooleanClause;
 import org.apache.lucene.search.BooleanQuery;
 import org.apache.lucene.search.BoostQuery;
-import org.apache.lucene.search.DoubleValuesSource;
 import org.apache.lucene.search.FuzzyQuery;
 import org.apache.lucene.search.IndexSearcher;
 import org.apache.lucene.search.Query;
-import org.apache.lucene.search.ScoreDoc;
 import org.apache.lucene.search.TermQuery;
 import org.apache.lucene.search.TopDocs;
 import org.apache.lucene.store.Directory;
 import org.apache.lucene.store.FSDirectory;
-import org.apache.lucene.expressions.Expression;
-import org.apache.lucene.expressions.SimpleBindings;
-import org.apache.lucene.expressions.js.JavascriptCompiler;
-import org.apache.lucene.queries.function.FunctionScoreQuery;
-import org.apache.lucene.util.BytesRef;
 
 import org.json.JSONObject;
 import org.json.JSONArray;
@@ -46,7 +32,7 @@ public class LuceneSearch {
 		JSONArray results = searchQuery("doctar");
 		for (int i = 0; i < results.length(); i++) {
 			JSONObject resultObject = results.getJSONObject(i);
-			String title = resultObject.getString("Title");
+			String title = resultObject.getString("SuggestedWord");
 			System.out.println(title);
 		}
 	}
@@ -57,18 +43,20 @@ public class LuceneSearch {
 	public static JSONArray searchQuery(String queryText) throws Exception {
 		IndexSearcher searcher = createSearcher();
 
-		TopDocs topDocs = searchInContent(queryText, searcher).topHits;
-		JSONArray result = searchIndex(topDocs, searcher);
+		JSONArray result = queryResult(queryText, searcher); 
+		if (result.length() == 0) {
+			result = suggestWordsResult(queryText, searcher);
+		}
 
 		return result;
 	}
-
-	private static SearchResult searchInContent(String queryText, IndexSearcher searcher) throws Exception {
+	
+	// Returns a JSONArray of the query result
+	private static JSONArray queryResult(String queryText, IndexSearcher searcher) throws Exception {
 
 		Analyzer analyzer = new StandardAnalyzer();
 		QueryParser queryParser = new MultiFieldQueryParser(SEARCH_FIELDS, analyzer);
 		queryParser.setDefaultOperator(QueryParser.Operator.AND);
-		List<String> suggestedWords = new ArrayList<>();
 
 		queryText = queryText.replaceAll("\\b(or)\\b", "OR");
 
@@ -81,8 +69,23 @@ public class LuceneSearch {
 
 		// Boost by query terms for each field
 		for (String field : SEARCH_FIELDS) {
-			FuzzyQuery fieldQuery = new FuzzyQuery(new Term(field, queryText), 1);
-			float boostValue = 1.0f;
+			float boostValue = 0f;
+			
+			Query fieldQuery = new TermQuery(new Term(field, queryText));
+			
+			// Set boost value
+			switch (field) {
+				case "docUrl":
+					boostValue = 0.5f;
+					break;
+				case "title":
+					boostValue = 0.9f;
+					break;
+				case "content":
+					boostValue = 0.2f;
+					break;
+			}
+
 			booleanQueryBuilder.add(new BoostQuery(fieldQuery, boostValue), BooleanClause.Occur.SHOULD);
 		}
 
@@ -92,32 +95,33 @@ public class LuceneSearch {
 
 		// Search the index
 		TopDocs hits = searcher.search(boostedQuery, 50);
-
-		if (hits.scoreDocs.length == 0) {
-			String[] terms = queryText.split("\\s+");
-			for (String term : terms) {
-				Term termField = new Term(SEARCH_FIELDS[1], term);
-
-				// Create a fuzzy query for each term
-				FuzzyQuery fuzzyQuery = new FuzzyQuery(termField, 2); // The second parameter is the maximum edit
-																		// distance
-				// Search the index with the fuzzy query
-				TopDocs fuzzyHits = searcher.search(fuzzyQuery, 5);
-
-				// Collect the suggested words from the fuzzy query results
-				for (int i = 0; i < fuzzyHits.scoreDocs.length; i++) {
-					String suggestedWord = searcher.doc(fuzzyHits.scoreDocs[i].doc).get(SEARCH_FIELDS[1]);
-					String output = suggestedWord.substring(0, 1).toUpperCase()
-							+ suggestedWord.substring(1).toLowerCase();
-					suggestedWords.add(suggestedWord);
-				}
-			}
-		}
-
-		return new SearchResult(suggestedWords, hits);
+		
+		JSONArray result = queryJson(hits, searcher);
+		
+		return result;
 	}
+	
+	// Returns a JSONArray of the suggest words
+	private static JSONArray suggestWordsResult(String queryText, IndexSearcher searcher) throws Exception {
+		TopDocs hits = null;
 
-	private static JSONArray searchIndex(TopDocs hits, IndexSearcher searcher) throws IOException {
+		String[] terms = queryText.split("\\s+");
+		for (String term : terms) {
+			Term termField = new Term(SEARCH_FIELDS[1], term);
+
+			// Create a fuzzy query for each term
+			FuzzyQuery query = new FuzzyQuery(termField, 2); // The second parameter is the maximum edit distance
+			
+			// Search the index with the fuzzy query
+			hits = searcher.search(query, 5);
+		}
+		
+		JSONArray result = suggestedWordsJson(hits, searcher);
+		
+		return result;
+	}
+	
+	private static JSONArray queryJson(TopDocs hits, IndexSearcher searcher) throws IOException {
 		JSONArray result = new JSONArray();
 
 		for (int i = 0; i < hits.scoreDocs.length; i++) {
@@ -133,30 +137,28 @@ public class LuceneSearch {
 
 		return result;
 	}
+	
+	private static JSONArray suggestedWordsJson(TopDocs hits, IndexSearcher searcher) throws IOException {
+		JSONArray result = new JSONArray();
+
+		for (int i = 0; i < hits.scoreDocs.length; i++) {
+            JSONObject jsonObject = new JSONObject();
+            int docId = hits.scoreDocs[i].doc;
+            Document d = searcher.doc(docId);
+            String suggestedWord = d.get("title");
+            String output = suggestedWord.substring(1, 2).toUpperCase()
+                    + suggestedWord.substring(2).toLowerCase();
+            jsonObject.put("SuggestedWord", output);
+            result.put(jsonObject);
+        }
+
+		return result;
+	}
 
 	private static IndexSearcher createSearcher() throws IOException {
 		Directory dir = FSDirectory.open(Paths.get(INDEX_DIR));
 		IndexReader reader = DirectoryReader.open(dir);
 		IndexSearcher searcher = new IndexSearcher(reader);
 		return searcher;
-	}
-
-
-	public static class SearchResult {
-		private final List<String> suggestedWords;
-		private final TopDocs topHits;
-
-		public SearchResult(List<String> suggestedWords, TopDocs topHits) {
-			this.suggestedWords = suggestedWords;
-			this.topHits = topHits;
-		}
-
-		public List<String> getSuggestedWords() {
-			return suggestedWords;
-		}
-
-		public TopDocs getTopHits() {
-			return topHits;
-		}
 	}
 }

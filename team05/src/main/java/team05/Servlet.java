@@ -30,11 +30,11 @@ public class Servlet extends HttpServlet {
 			resp.setContentType("application/json");
 			resp.getWriter().write(jsonResult);
 			
-//			for (int i = 0; i < result.length(); i++) {
-//		    JSONObject resultObject = result.getJSONObject(i);
-//		    String title = resultObject.getString("Title");
-//		    System.out.println(title);
-//		}
+			for (int i = 0; i < result.length(); i++) {
+		    JSONObject resultObject = result.getJSONObject(i);
+		    String title = resultObject.getString("SuggestedWord");
+		    System.out.println(title);
+		}
 
 		} catch (Exception e) {
 			resp.getWriter().write(e.toString());
