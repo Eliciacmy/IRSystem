@@ -1,8 +1,28 @@
 package team05;
 
+import edu.mit.jwi.Dictionary;
+import edu.mit.jwi.IDictionary;
+import edu.mit.jwi.item.IIndexWord;
+import edu.mit.jwi.item.ISynset;
+import edu.mit.jwi.item.IWord;
+import edu.mit.jwi.item.IWordID;
+import edu.mit.jwi.item.POS;
+
+import java.io.File;
+import java.io.FileReader;
+import java.io.BufferedReader;
 import java.io.IOException;
+import java.net.URL;
+import java.io.StringReader;
 import java.net.URLDecoder;
+import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Map;
+import java.util.ArrayList;
+import java.util.HashMap;
 
 import org.apache.lucene.analysis.Analyzer;
 import org.apache.lucene.analysis.standard.StandardAnalyzer;
@@ -23,17 +43,30 @@ import org.apache.lucene.search.TopDocs;
 import org.apache.lucene.store.Directory;
 import org.apache.lucene.store.FSDirectory;
 
+import org.apache.lucene.analysis.synonym.SynonymMap;
+import org.apache.lucene.analysis.synonym.WordnetSynonymParser;
+import org.apache.lucene.analysis.synonym.SynonymMap.Builder;
+
 import org.json.JSONObject;
 import org.json.JSONArray;
 
 public class LuceneSearch {
 
 	public static void main(String[] args) throws Exception {
-		JSONArray results = searchQuery("doctar");
+		String searchTerm = "details";
+        List<String> synonyms = getSynonyms(searchTerm);
+
+        if (!synonyms.isEmpty()) {
+            System.out.println("Synonyms for '" + searchTerm + "': " + synonyms);
+        }
+  		
+		JSONArray results = searchQuery("details");
+		System.out.println(results.getJSONObject(results.length() - 1));
 		for (int i = 0; i < results.length(); i++) {
 			JSONObject resultObject = results.getJSONObject(i);
-			String title = resultObject.getString("SuggestedWord");
-			System.out.println(title);
+			//String title = resultObject.getString("Synonyms");
+			//String title = resultObject.getString("SuggestedWord");
+
 		}
 	}
 
@@ -42,8 +75,11 @@ public class LuceneSearch {
 
 	public static JSONArray searchQuery(String queryText) throws Exception {
 		IndexSearcher searcher = createSearcher();
+		
+		queryText = removeSpecialCharacters(queryText);
 
 		JSONArray result = queryResult(queryText, searcher); 
+
 		if (result.length() == 0) {
 			result = suggestWordsResult(queryText, searcher);
 		}
@@ -96,7 +132,9 @@ public class LuceneSearch {
 		// Search the index
 		TopDocs hits = searcher.search(boostedQuery, 50);
 		
-		JSONArray result = queryJson(hits, searcher);
+		List<String> synonyms = getSynonyms(queryText);
+		
+		JSONArray result = queryJson(hits, synonyms, searcher);
 		
 		return result;
 	}
@@ -121,7 +159,7 @@ public class LuceneSearch {
 		return result;
 	}
 	
-	private static JSONArray queryJson(TopDocs hits, IndexSearcher searcher) throws IOException {
+	private static JSONArray queryJson(TopDocs hits, List<String> synonyms, IndexSearcher searcher) throws IOException {
 		JSONArray result = new JSONArray();
 
 		for (int i = 0; i < hits.scoreDocs.length; i++) {
@@ -134,26 +172,41 @@ public class LuceneSearch {
 
 			result.put(jsonObject);
 		}
-
+		
+		JSONObject jsonObject = new JSONObject();
+		result.put(jsonObject.put("Synonyms", synonyms));
+		
 		return result;
 	}
 	
 	private static JSONArray suggestedWordsJson(TopDocs hits, IndexSearcher searcher) throws IOException {
-		JSONArray result = new JSONArray();
+        JSONArray result = new JSONArray();
+        HashSet<String> uniqueSuggestedWords = new HashSet<>();
 
-		for (int i = 0; i < hits.scoreDocs.length; i++) {
-            JSONObject jsonObject = new JSONObject();
+        for (int i = 0; i < hits.scoreDocs.length; i++) {
             int docId = hits.scoreDocs[i].doc;
             Document d = searcher.doc(docId);
-            String suggestedWord = d.get("title");
-            String output = suggestedWord.substring(1, 2).toUpperCase()
-                    + suggestedWord.substring(2).toLowerCase();
-            jsonObject.put("SuggestedWord", output);
+            String output = d.get("title");
+
+            // Capitalize the First Character of the Word
+            output = output.substring(1, 2).toUpperCase() + output.substring(2).toLowerCase();
+
+            // Split by ","
+            String[] suggestedWordList = output.split(",");
+
+            // Remove leading and trailing whitespaces
+            uniqueSuggestedWords.add(suggestedWordList[0].trim());           
+        }
+
+        // Convert the uniqueSuggestedWords HashSet to a JSONArray
+        for (String uniqueSuggestedWord : uniqueSuggestedWords) {
+            JSONObject jsonObject = new JSONObject();
+            jsonObject.put("SuggestedWord", uniqueSuggestedWord);
             result.put(jsonObject);
         }
 
-		return result;
-	}
+        return result;
+    }
 
 	private static IndexSearcher createSearcher() throws IOException {
 		Directory dir = FSDirectory.open(Paths.get(INDEX_DIR));
@@ -161,4 +214,62 @@ public class LuceneSearch {
 		IndexSearcher searcher = new IndexSearcher(reader);
 		return searcher;
 	}
+	
+	public static String removeSpecialCharacters(String input) {
+        // Define a regular expression pattern to match special characters
+        String regex = "[^a-zA-Z0-9\\s]";
+
+        // Replace all special characters with an empty string
+        String result = input.replaceAll(regex, "");
+
+        return result;
+    }
+	
+	private static List<String> getSynonyms(String searchTerm) {
+        String filePath = "wordnet/wn_s.pl";
+        
+        List<String> nounSynonyms = new ArrayList<>();
+        int searchTermSynsetID = -1; // Placeholder for the SynsetID of the search term
+
+        try {
+            Map<Integer, List<String>> synsetIDMap = new HashMap<>();
+
+            String line;
+            BufferedReader bufferedReader = new BufferedReader(new FileReader(filePath));
+            while ((line = bufferedReader.readLine()) != null) {
+                String[] parts = line.split(",");
+                if (parts.length >= 3) {
+                    int synsetID = Integer.parseInt(parts[0].replaceAll("\\D", ""));
+                    String word = parts[2].replaceAll("'", "").trim();
+                    String POS = parts[3].replaceAll("'", "").trim();
+
+                    List<String> words = synsetIDMap.getOrDefault(synsetID, new ArrayList<>());
+                    words.add(word);
+                    synsetIDMap.put(synsetID, words);
+
+                    // Check if the word is an exact match for the search term and has POS "n" (nouns)
+                    if (word.equalsIgnoreCase(searchTerm) && POS.equalsIgnoreCase("n")) {
+                        searchTermSynsetID = synsetID;
+                    }
+                }
+            }
+            bufferedReader.close();
+
+            // Collect noun synonyms associated with the search term's SynsetID
+            if (searchTermSynsetID != -1) {
+                List<String> wordsWithSameSynsetID = synsetIDMap.get(searchTermSynsetID);
+                for (String word : wordsWithSameSynsetID) {
+                    if (!word.equalsIgnoreCase(searchTerm)) {
+                        nounSynonyms.add(word);
+                    }
+                }
+            } else {
+                System.out.println("Word '" + searchTerm + "' not found in the Prolog file.");
+            }
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return nounSynonyms;
+    }
 }
