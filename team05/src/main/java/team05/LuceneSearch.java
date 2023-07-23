@@ -43,18 +43,20 @@ public class LuceneSearch {
 ////            System.out.println("Synonyms for '" + searchTerm + "': " + synonyms);
 ////        }
 //  		
-//		JSONArray results = searchQuery("doctar");
-//		System.out.println(results.getJSONObject(results.length() - 1));
+//		JSONArray results = searchQuery("internet");
+//		//System.out.println(results.getJSONObject(results.length() - 1));
 //		for (int i = 0; i < results.length(); i++) {
 //			JSONObject resultObject = results.getJSONObject(i);
+//			//System.out.println(resultObject);
 //			//String title = resultObject.getString("Synonyms");
 //			//String title = resultObject.getString("SuggestedWord");
 //
 //		}
 //	}
 
-	private static final String INDEX_DIR = "indexedFiles";
+	private static final String INDEX_DIR = "../../team05/indexedFiles";
 	private static final String[] SEARCH_FIELDS = { "docurl", "title", "content" };
+    private static final String filePath = "../../team05/wordnet/wn_s.pl";
 
 	public static JSONArray searchQuery(String queryText) throws Exception {
 		IndexSearcher searcher = createSearcher();
@@ -63,7 +65,6 @@ public class LuceneSearch {
 
 		JSONArray result = queryResult(queryText, searcher); 
 
-		System.out.println(result);
 		if (result.length() == 0) {
 			result = suggestWordsResult(queryText, searcher);
 		}
@@ -116,12 +117,7 @@ public class LuceneSearch {
 		// Search the index
 		TopDocs hits = searcher.search(boostedQuery, 50);
 		
-		List<String> synonyms = new ArrayList<String>();
-		if (hits.scoreDocs.length > 0) {
-			synonyms = getSynonyms(queryText);
-		}
-		
-		JSONArray result = queryJson(hits, synonyms, searcher);
+		JSONArray result = queryJson(hits, queryText, searcher);
 		
 		return result;
 	}
@@ -146,7 +142,7 @@ public class LuceneSearch {
 		return result;
 	}
 	
-	private static JSONArray queryJson(TopDocs hits, List<String> synonyms, IndexSearcher searcher) throws IOException {
+	private static JSONArray queryJson(TopDocs hits, String queryText, IndexSearcher searcher) throws IOException {
 		JSONArray result = new JSONArray();
 
 		for (int i = 0; i < hits.scoreDocs.length; i++) {
@@ -160,10 +156,13 @@ public class LuceneSearch {
 			result.put(jsonObject);
 		}
 		
-		if (synonyms.size() > 0) {
- 		JSONObject jsonObject = new JSONObject();		
-		result.put(jsonObject.put("Synonyms", synonyms));
+		List<String> synonyms = new ArrayList<String>();
+		if (getSynonyms(queryText).size() != 0) {
+			synonyms = getSynonyms(queryText);
+			JSONObject jsonObject = new JSONObject();    
+		    result.put(jsonObject.put("Synonyms", synonyms));
 		}
+
 		return result;
 	}
 	
@@ -214,7 +213,7 @@ public class LuceneSearch {
     }
 	
 	private static List<String> getSynonyms(String searchTerm) {
-        String filePath = "wordnet/wn_s.pl";
+        System.out.println(searchTerm);
         
         List<String> nounSynonyms = new ArrayList<>();
         int searchTermSynsetID = -1; // Placeholder for the SynsetID of the search term
