@@ -35,23 +35,23 @@ import org.json.JSONArray;
 
 public class LuceneSearch {
 
-	public static void main(String[] args) throws Exception {
-		String searchTerm = "details";
-        List<String> synonyms = getSynonyms(searchTerm);
-
-        if (!synonyms.isEmpty()) {
-            System.out.println("Synonyms for '" + searchTerm + "': " + synonyms);
-        }
-  		
-		JSONArray results = searchQuery("details");
-		System.out.println(results.getJSONObject(results.length() - 1));
-		for (int i = 0; i < results.length(); i++) {
-			JSONObject resultObject = results.getJSONObject(i);
-			//String title = resultObject.getString("Synonyms");
-			//String title = resultObject.getString("SuggestedWord");
-
-		}
-	}
+//	public static void main(String[] args) throws Exception {
+////		String searchTerm = "details";
+////        List<String> synonyms = getSynonyms(searchTerm);
+////
+////        if (!synonyms.isEmpty()) {
+////            System.out.println("Synonyms for '" + searchTerm + "': " + synonyms);
+////        }
+//  		
+//		JSONArray results = searchQuery("doctar");
+//		System.out.println(results.getJSONObject(results.length() - 1));
+//		for (int i = 0; i < results.length(); i++) {
+//			JSONObject resultObject = results.getJSONObject(i);
+//			//String title = resultObject.getString("Synonyms");
+//			//String title = resultObject.getString("SuggestedWord");
+//
+//		}
+//	}
 
 	private static final String INDEX_DIR = "indexedFiles";
 	private static final String[] SEARCH_FIELDS = { "docurl", "title", "content" };
@@ -63,6 +63,7 @@ public class LuceneSearch {
 
 		JSONArray result = queryResult(queryText, searcher); 
 
+		System.out.println(result);
 		if (result.length() == 0) {
 			result = suggestWordsResult(queryText, searcher);
 		}
@@ -115,7 +116,10 @@ public class LuceneSearch {
 		// Search the index
 		TopDocs hits = searcher.search(boostedQuery, 50);
 		
-		List<String> synonyms = getSynonyms(queryText);
+		List<String> synonyms = new ArrayList<String>();
+		if (hits.scoreDocs.length > 0) {
+			synonyms = getSynonyms(queryText);
+		}
 		
 		JSONArray result = queryJson(hits, synonyms, searcher);
 		
@@ -156,9 +160,10 @@ public class LuceneSearch {
 			result.put(jsonObject);
 		}
 		
-		JSONObject jsonObject = new JSONObject();
+		if (synonyms.size() > 0) {
+ 		JSONObject jsonObject = new JSONObject();		
 		result.put(jsonObject.put("Synonyms", synonyms));
-		
+		}
 		return result;
 	}
 	
