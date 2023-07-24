@@ -1,46 +1,48 @@
 package team05;
 
-import java.io.File;
 import java.io.IOException;
-import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.apache.lucene.search.IndexSearcher;
-import org.apache.lucene.search.TopDocs;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
+@SuppressWarnings("serial")
 @WebServlet("/Search")
 public class Servlet extends HttpServlet {
 
-  @Override
-  protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+    @Override
+    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        // Get the query string from the request parameter
+        String queryString = req.getQueryString();
 
-    LuceneSearch search = new LuceneSearch();
-    String queryString = req.getQueryString();
-    JSONArray result = null;
-     
-    try {
-      //JSONObject responseObject = new JSONObject();
-      result = LuceneSearch.searchQuery(queryString);
-      
-      //System.out.println(result);
-      for (int i = 0; i < result.length(); i++) {
-        JSONObject resultObject = result.getJSONObject(i);
-        String title = resultObject.getString("SuggestedWord");
-        //System.out.println(title);
-    }
+        // Initialize a JSON array to store the search results
+        JSONArray result = null;
 
-    } catch (Exception e) {
-       JSONObject jsonObject = new JSONObject();    
-      result.put(jsonObject.put("Error", e.toString()));
+        try {
+            // Perform the search query using LuceneSearch class and get the results in a JSON array
+            result = LuceneSearch.searchQuery(queryString);
+
+        } catch (Exception e) {
+            // If an error occurs during the search, create a JSON object with the error message
+            JSONObject errorObject = new JSONObject();
+            errorObject.put("Error", e.toString());
+
+            // Create a JSON array with the error object
+            result = new JSONArray();
+            result.put(errorObject);
+        }
+
+        // Convert the JSON array to a string
+        String jsonResult = result.toString();
+
+        // Set the response content type to indicate that the response is in JSON format
+        resp.setContentType("application/json");
+
+        // Write the JSON result to the response
+        resp.getWriter().write(jsonResult);
     }
-    String jsonResult = result.toString();
-    resp.setContentType("application/json");
-    resp.getWriter().write(jsonResult);
-  }
 }

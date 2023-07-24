@@ -1,0 +1,50 @@
+24-Jul-2023 20:12:44.134 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Server version name:   Apache Tomcat/8.5.90
+24-Jul-2023 20:12:44.144 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Server built:          Jun 2 2023 17:14:04 UTC
+24-Jul-2023 20:12:44.144 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Server version number: 8.5.90.0
+24-Jul-2023 20:12:44.144 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log OS Name:               Windows 11
+24-Jul-2023 20:12:44.144 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log OS Version:            10.0
+24-Jul-2023 20:12:44.144 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Architecture:          amd64
+24-Jul-2023 20:12:44.144 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Java Home:             C:\Program Files\Java\jdk-20
+24-Jul-2023 20:12:44.144 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log JVM Version:           20.0.1+9-29
+24-Jul-2023 20:12:44.144 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log JVM Vendor:            Oracle Corporation
+24-Jul-2023 20:12:44.144 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log CATALINA_BASE:         C:\Users\Elicia\eclipse-workspace\IRSystem\tomcat-8.5
+24-Jul-2023 20:12:44.144 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log CATALINA_HOME:         C:\Users\Elicia\eclipse-workspace\IRSystem\tomcat-8.5
+24-Jul-2023 20:12:44.144 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: --add-opens=java.base/java.lang=ALL-UNNAMED
+24-Jul-2023 20:12:44.144 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: --add-opens=java.base/java.io=ALL-UNNAMED
+24-Jul-2023 20:12:44.144 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: --add-opens=java.base/java.util=ALL-UNNAMED
+24-Jul-2023 20:12:44.144 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: --add-opens=java.base/java.util.concurrent=ALL-UNNAMED
+24-Jul-2023 20:12:44.144 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: --add-opens=java.rmi/sun.rmi.transport=ALL-UNNAMED
+24-Jul-2023 20:12:44.144 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.util.logging.config.file=C:\Users\Elicia\eclipse-workspace\IRSystem\tomcat-8.5\conf\logging.properties
+24-Jul-2023 20:12:44.144 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.util.logging.manager=org.apache.juli.ClassLoaderLogManager
+24-Jul-2023 20:12:44.144 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djdk.tls.ephemeralDHKeySize=2048
+24-Jul-2023 20:12:44.144 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.protocol.handler.pkgs=org.apache.catalina.webresources
+24-Jul-2023 20:12:44.150 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dignore.endorsed.dirs=
+24-Jul-2023 20:12:44.150 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dcatalina.base=C:\Users\Elicia\eclipse-workspace\IRSystem\tomcat-8.5
+24-Jul-2023 20:12:44.150 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dcatalina.home=C:\Users\Elicia\eclipse-workspace\IRSystem\tomcat-8.5
+24-Jul-2023 20:12:44.150 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.io.tmpdir=C:\Users\Elicia\eclipse-workspace\IRSystem\tomcat-8.5\temp
+24-Jul-2023 20:12:44.150 INFO [main] org.apache.catalina.core.AprLifecycleListener.lifecycleEvent The Apache Tomcat Native library which allows using OpenSSL was not found on the java.library.path: [C:\Program Files\Java\jdk-20\bin;C:\WINDOWS\Sun\Java\bin;C:\WINDOWS\system32;C:\WINDOWS;C:\Program Files\Common Files\Oracle\Java\javapath;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\System32\OpenSSH\;C:\Program Files\Git\cmd;C:\Program Files\nodejs\;C:\apache-maven-3.9.3\bin;C:\Users\Elicia\AppData\Local\Microsoft\WindowsApps;C:\Users\Elicia\AppData\Local\Programs\Microsoft VS Code\bin;C:\Users\Elicia\AppData\Local\Programs\Python\Python311;C:\Users\Elicia\AppData\Local\Programs\Python\Python311\Scripts;C:\Program Files\Java\jdk-20;C:\Users\Elicia\AppData\Local\GitHubDesktop\bin;C:\Users\Elicia\AppData\Roaming\npm;C:\apache-maven-3.9.3-bin\apache-maven-3.9.3\bin;;.]
+24-Jul-2023 20:12:44.191 INFO [main] org.apache.coyote.AbstractProtocol.init Initializing ProtocolHandler ["http-nio-8080"]
+24-Jul-2023 20:12:44.239 INFO [main] org.apache.catalina.startup.Catalina.load Initialization processed in 632 ms
+24-Jul-2023 20:12:44.307 INFO [main] org.apache.catalina.core.StandardService.startInternal Starting service [Catalina]
+24-Jul-2023 20:12:44.307 INFO [main] org.apache.catalina.core.StandardEngine.startInternal Starting Servlet engine: [Apache Tomcat/8.5.90]
+24-Jul-2023 20:12:44.319 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployWAR Deploying web application archive [C:\Users\Elicia\eclipse-workspace\IRSystem\tomcat-8.5\webapps\React.war]
+24-Jul-2023 20:12:45.424 INFO [localhost-startStop-1] org.apache.jasper.servlet.TldScanner.scanJars At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+24-Jul-2023 20:12:45.520 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployWAR Deployment of web application archive [C:\Users\Elicia\eclipse-workspace\IRSystem\tomcat-8.5\webapps\React.war] has finished in [1,201] ms
+24-Jul-2023 20:12:45.520 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deploying web application directory [C:\Users\Elicia\eclipse-workspace\IRSystem\tomcat-8.5\webapps\docs]
+24-Jul-2023 20:12:45.567 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory [C:\Users\Elicia\eclipse-workspace\IRSystem\tomcat-8.5\webapps\docs] has finished in [47] ms
+24-Jul-2023 20:12:45.567 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deploying web application directory [C:\Users\Elicia\eclipse-workspace\IRSystem\tomcat-8.5\webapps\examples]
+24-Jul-2023 20:12:45.986 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory [C:\Users\Elicia\eclipse-workspace\IRSystem\tomcat-8.5\webapps\examples] has finished in [419] ms
+24-Jul-2023 20:12:45.986 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deploying web application directory [C:\Users\Elicia\eclipse-workspace\IRSystem\tomcat-8.5\webapps\host-manager]
+24-Jul-2023 20:12:46.023 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory [C:\Users\Elicia\eclipse-workspace\IRSystem\tomcat-8.5\webapps\host-manager] has finished in [37] ms
+24-Jul-2023 20:12:46.023 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deploying web application directory [C:\Users\Elicia\eclipse-workspace\IRSystem\tomcat-8.5\webapps\manager]
+24-Jul-2023 20:12:46.058 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory [C:\Users\Elicia\eclipse-workspace\IRSystem\tomcat-8.5\webapps\manager] has finished in [35] ms
+24-Jul-2023 20:12:46.058 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deploying web application directory [C:\Users\Elicia\eclipse-workspace\IRSystem\tomcat-8.5\webapps\ROOT]
+24-Jul-2023 20:12:46.074 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory [C:\Users\Elicia\eclipse-workspace\IRSystem\tomcat-8.5\webapps\ROOT] has finished in [16] ms
+24-Jul-2023 20:12:46.091 INFO [main] org.apache.coyote.AbstractProtocol.start Starting ProtocolHandler ["http-nio-8080"]
+24-Jul-2023 20:12:46.122 INFO [main] org.apache.catalina.startup.Catalina.start Server startup in 1894 ms
+24-Jul-2023 20:13:09.376 INFO [http-nio-8080-exec-1] org.apache.lucene.store.MemorySegmentIndexInputProvider.<init> Using MemorySegmentIndexInput with Java 20; to disable start with -Dorg.apache.lucene.store.MMapDirectory.enableMemorySegments=false
+24-Jul-2023 23:52:58.082 INFO [ContainerBackgroundProcessor[StandardEngine[Catalina]]] org.apache.catalina.startup.HostConfig.undeploy Undeploying context [/React]
+24-Jul-2023 23:52:58.163 INFO [localhost-startStop-2] org.apache.catalina.startup.HostConfig.deployWAR Deploying web application archive [C:\Users\Elicia\eclipse-workspace\IRSystem\tomcat-8.5\webapps\React.war]
+24-Jul-2023 23:52:59.187 INFO [localhost-startStop-2] org.apache.jasper.servlet.TldScanner.scanJars At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+24-Jul-2023 23:52:59.195 INFO [localhost-startStop-2] org.apache.catalina.startup.HostConfig.deployWAR Deployment of web application archive [C:\Users\Elicia\eclipse-workspace\IRSystem\tomcat-8.5\webapps\React.war] has finished in [1,032] ms
+24-Jul-2023 23:53:36.454 INFO [http-nio-8080-exec-1] org.apache.lucene.store.MemorySegmentIndexInputProvider.<init> Using MemorySegmentIndexInput with Java 20; to disable start with -Dorg.apache.lucene.store.MMapDirectory.enableMemorySegments=false

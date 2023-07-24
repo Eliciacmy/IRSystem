@@ -5,14 +5,10 @@ import org.apache.lucene.analysis.standard.StandardAnalyzer;
 import org.apache.lucene.document.Document;
 import org.apache.lucene.document.Field;
 import org.apache.lucene.document.FieldType;
-import org.apache.lucene.document.NumericDocValuesField;
-import org.apache.lucene.document.StoredField;
 import org.apache.lucene.index.IndexOptions;
 import org.apache.lucene.index.IndexWriter;
 import org.apache.lucene.index.IndexWriterConfig;
 import org.apache.lucene.store.FSDirectory;
-import javax.xml.parsers.ParserConfigurationException;
-
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.JSONValue;
@@ -22,115 +18,107 @@ import java.nio.file.DirectoryStream;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.util.*;
 
 public class LuceneIndex {
 
-	private static final String indexDirectory = "indexedFiles/";
-	private static final String dirToBeIndexed = "scrapedData";
+    // Directory where the indexed files will be stored
+    private static final String INDEX_DIRECTORY = "indexedFiles/";
 
-	/**
-	 * JSON Parser
-	 */
-	public JSONArray parseJSONFile() throws IOException {
+    // Directory containing the JSON files to be indexed
+    private static final String DIR_TO_BE_INDEXED = "scrapedData";
 
-		Path dir = Paths.get(dirToBeIndexed);
+    /**
+     * JSON Parser to read and parse JSON files
+     */
+    public JSONArray parseJSONFile() throws IOException {
+        Path dir = Paths.get(DIR_TO_BE_INDEXED);
 
-		try (DirectoryStream<Path> stream = Files.newDirectoryStream(dir, "*.json")) {
-			for (Path p : stream) {
-				InputStream jsonFile = new FileInputStream(p.toString());
-				Reader readerJson = new InputStreamReader(jsonFile);
+        try (DirectoryStream<Path> stream = Files.newDirectoryStream(dir, "*.json")) {
+            // Process each JSON file one by one
+            for (Path p : stream) {
+                InputStream jsonFile = new FileInputStream(p.toString());
+                Reader readerJson = new InputStreamReader(jsonFile);
 
-				// Parse the json file using simple-json library
-				Object fileObjects = JSONValue.parse(readerJson);
-				JSONArray arrayObjects = (JSONArray) fileObjects;
+                // Parse the json file using simple-json library
+                Object fileObjects = JSONValue.parse(readerJson);
+                JSONArray arrayObjects = (JSONArray) fileObjects;
 
-				return arrayObjects;
-			}
-		}
-		return null;
-	}
+                return arrayObjects;
+            }
+        }
+        return null;
+    }
 
-	/**
-	 * Stream indexer
-	 */
-	@SuppressWarnings("unchecked")
-	private int index(Path indexDir) throws IOException {
-		Analyzer analyzer = new StandardAnalyzer();
-		IndexWriterConfig config = new IndexWriterConfig(analyzer);
-		IndexWriter indexWriter = new IndexWriter(FSDirectory.open(indexDir), config);
+    /**
+     * Stream indexer to index JSON objects from files
+     */
+    @SuppressWarnings("unchecked")
+    private int index(Path indexDir) throws IOException {
+        Analyzer analyzer = new StandardAnalyzer();
+        IndexWriterConfig config = new IndexWriterConfig(analyzer);
 
-		JSONArray jsonObjects = parseJSONFile();
+        // Initialize the IndexWriter to write the indexed data to the specified directory
+        IndexWriter indexWriter = new IndexWriter(FSDirectory.open(indexDir), config);
 
-		for (JSONObject object : (List<JSONObject>) jsonObjects) {
-			Document doc = new Document();
-			final FieldType bodyOptions = new FieldType();
-			bodyOptions.setStored(true);
-			bodyOptions.setStoreTermVectors(true);
-			bodyOptions.setTokenized(true);
-			bodyOptions.setIndexOptions(IndexOptions.DOCS_AND_FREQS_AND_POSITIONS_AND_OFFSETS);
+        // Parse the JSON objects from the files
+        JSONArray jsonObjects = parseJSONFile();
 
-			for (String field : (Set<String>) object.keySet()) {
-//				switch (field) {
-//				case "docUrl":
-//					Field urlField = new Field(field, (String) object.get(field).toString(), bodyOptions);
-//					doc.add(urlField);
-//					doc.add(new NumericDocValuesField("boost", Double.doubleToRawLongBits(1.0)));
-//					break;
-//				case "title":
-//					Field titleField = new Field(field, (String) object.get(field).toString(), bodyOptions);
-//					doc.add(titleField);
-//					doc.add(new NumericDocValuesField("boost", Double.doubleToRawLongBits(3.0)));
-//					break;
-//				case "content":
-//					Field contentField = new Field(field, (String) object.get(field).toString(), bodyOptions);
-//					doc.add(contentField);
-//					doc.add(new NumericDocValuesField("boost", Double.doubleToRawLongBits(2.0)));
-//					break;
-//				}
-				 doc.add(new Field(field, (String) object.get(field).toString(),
-				 bodyOptions));
+        // Index each JSON object
+        for (JSONObject object : (Iterable<JSONObject>) jsonObjects) {
+            Document doc = new Document();
 
-			}
+            // Create the field options to store term vectors and other indexing options
+            final FieldType bodyOptions = new FieldType();
+            bodyOptions.setStored(true);
+            bodyOptions.setStoreTermVectors(true);
+            bodyOptions.setTokenized(true);
+            bodyOptions.setIndexOptions(IndexOptions.DOCS_AND_FREQS_AND_POSITIONS_AND_OFFSETS);
 
-			try {
-				System.out.println(doc);
-				indexWriter.addDocument(doc);
-			} catch (IOException ex) {
-				System.err.println("Error adding documents to the index. " + ex.getMessage());
-			}
+            // Add each field of the JSON object to the document
+            for (String field : (Iterable<String>) object.keySet()) {
+                doc.add(new Field(field, (String) object.get(field).toString(), bodyOptions));
+            }
 
-		}
+            try {
+                // Add the document to the index writer
+                indexWriter.addDocument(doc);
+            } catch (IOException ex) {
+                System.err.println("Error adding documents to the index. " + ex.getMessage());
+            }
+        }
 
-		int numIndexed = indexWriter.numRamDocs();
+        // Get the number of documents indexed
+        int numIndexed = indexWriter.numRamDocs();
 
-		finish(indexWriter);
+        // Close the index writer
+        finish(indexWriter);
 
-		return numIndexed;
-	}
+        return numIndexed;
+    }
 
-	/**
-	 * Write the document to the index and close it
-	 */
-	public void finish(IndexWriter indexWriter) {
-		try {
-			indexWriter.commit();
-			indexWriter.close();
-		} catch (IOException ex) {
-			System.err.println("We had a problem closing the index: " + ex.getMessage());
-		}
-	}
+    /**
+     * Write the document to the index and close the index writer
+     */
+    public void finish(IndexWriter indexWriter) {
+        try {
+            // Commit the changes and close the index writer
+            indexWriter.commit();
+            indexWriter.close();
+        } catch (IOException ex) {
+            System.err.println("We had a problem closing the index: " + ex.getMessage());
+        }
+    }
 
-	/**
-	 * Main function
-	 */
-	public static void main(String[] args) throws IOException, ParserConfigurationException {
-		Path indexDir = Paths.get(indexDirectory);
+    /**
+     * Main function to initiate indexing
+     */
+    public static void main(String[] args) throws IOException {
+        Path indexDir = Paths.get(INDEX_DIRECTORY);
 
-		LuceneIndex indexer = new LuceneIndex();
+        LuceneIndex indexer = new LuceneIndex();
 
-		int numIndexed = indexer.index(indexDir);
-		System.out.println("Total files indexed " + numIndexed);
-		System.out.println(numIndexed);
-	}
+        // Perform indexing and get the number of indexed files
+        int numIndexed = indexer.index(indexDir);
+        System.out.println("Total files indexed: " + numIndexed);
+    }
 }
