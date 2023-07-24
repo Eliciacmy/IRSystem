@@ -1,19 +1,11 @@
 package team05;
 
-import java.io.FileReader;
-import java.io.BufferedReader;
-import java.io.FileInputStream;
 import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.io.Reader;
 import java.net.URLDecoder;
-import java.nio.file.DirectoryStream;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.HashSet;
-import java.util.Iterator;
 import java.util.List;
 import java.util.ArrayList;
 import java.util.Set;
@@ -32,19 +24,18 @@ import org.apache.lucene.queryparser.classic.QueryParser;
 import org.apache.lucene.search.BooleanClause;
 import org.apache.lucene.search.BooleanQuery;
 import org.apache.lucene.search.BoostQuery;
-import org.apache.lucene.search.FuzzyQuery;
 import org.apache.lucene.search.IndexSearcher;
 import org.apache.lucene.search.Query;
 import org.apache.lucene.search.TermQuery;
 import org.apache.lucene.search.TopDocs;
 import org.apache.lucene.store.Directory;
 import org.apache.lucene.store.FSDirectory;
-import org.apache.lucene.store.MMapDirectory;
 
 // Import JSON libraries
 import org.json.JSONArray;
 import org.json.JSONObject;
 import org.json.JSONTokener;
+import java.io.FileWriter;
 
 public class LuceneEval {
 
@@ -70,6 +61,7 @@ public class LuceneEval {
 	        JSONTokener tokener = new JSONTokener(jsonString);
 	        JSONArray arrayObjects = new JSONArray(tokener);
 
+    		JSONArray metricsResult = new JSONArray();
 	        for (Object queryObject : arrayObjects) {
 	            if (queryObject instanceof JSONObject) {
 	                JSONObject query = (JSONObject) queryObject;
@@ -81,12 +73,16 @@ public class LuceneEval {
 	                    relevantDocs.add(relevantDocsArray.optString(i));
 	                }
 
-	                JSONArray result = searchQuery(queryText, relevantDocs);
-
-	                // Display the results and evaluation metrics
-	                System.out.println("Query (" + queryText + ") Results:");
-	                System.out.println(result.toString(2));
-	                System.out.println();
+	                JSONArray result = searchQuery(queryText, metricsResult, relevantDocs);
+	                
+		             // Write the 'result' JSONArray to a JSON file in the same directory
+	                Path resultFilePath = dir.resolve("relevancePerformance.json");
+	                try (FileWriter fileWriter = new FileWriter(resultFilePath.toFile())) {
+	                    fileWriter.write(result.toString());
+	                    System.out.println("Search results have been written to: " + resultFilePath);
+	                } catch (IOException e) {
+	                    e.printStackTrace();
+	                }
 	            }
 	        }
 	    } catch (Exception e) {
@@ -95,7 +91,7 @@ public class LuceneEval {
 	}
 
 	// Method to perform a search query and return JSON results
-	public static JSONArray searchQuery(String queryText, Set<String> relevantDocs) throws Exception {
+	public static JSONArray searchQuery(String queryText, JSONArray metricsResult, Set<String> relevantDocs) throws Exception {
 		IndexSearcher searcher = createSearcher();
 		queryText = removeSpecialCharacters(queryText);
 
@@ -105,25 +101,26 @@ public class LuceneEval {
 		JSONArray result = queryJson(topDocs, queryText, searcher);
 
 		// Add evaluation metrics to the result
-		return addEvaluationMetrics(result, relevantDocs);
+		return addEvaluationMetrics(queryText, result, metricsResult, relevantDocs);
 	}
 
 	// Method to add R5, R10, and R20 evaluation metrics to the JSON result
-	private static JSONArray addEvaluationMetrics(JSONArray result, Set<String> relevantDocs) {
+	private static JSONArray addEvaluationMetrics(String queryText, JSONArray result, JSONArray metricsResult, Set<String> relevantDocs) {
 		int relevantDocsCount = relevantDocs.size();
 		int r5 = calculateRecallAtRank(result, relevantDocs, 5);
 		int r10 = calculateRecallAtRank(result, relevantDocs, 10);
 		int r20 = calculateRecallAtRank(result, relevantDocs, 20);
-
+		
 		JSONObject metricsObject = new JSONObject();
+		metricsObject.put("Query", queryText);
 		metricsObject.put("TotalRelevantDocuments", relevantDocsCount);
 		metricsObject.put("R5", r5);
-		metricsObject.put("R10", r10);
-		metricsObject.put("R20", r20);
+//		metricsObject.put("R10", r10);
+//		metricsObject.put("R20", r20);
 
-		result.put(metricsObject);
+		metricsResult.put(metricsObject);
 
-		return result;
+		return metricsResult;
 	}
 
 	// Method to calculate the recall at a given rank
@@ -162,10 +159,10 @@ public class LuceneEval {
 			// Set boost value based on the field
 			switch (field) {
 			case "docurl":
-				boostValue = 0.9f;
+				boostValue = 0.7f;
 				break;
 			case "title":
-				boostValue = 0.5f;
+				boostValue = 0.7f;
 				break;
 			case "content":
 				boostValue = 0.2f;

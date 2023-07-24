@@ -13,7 +13,50 @@
         "https://www.encyclopedia.com/history/encyclopedias-almanacs-transcripts-and-maps/computer-industry",
         "https://www.encyclopedia.com/computing/news-wires-white-papers-and-books/early-computers",
         "https://www.encyclopedia.com/economics/encyclopedias-almanacs-transcripts-and-maps/personal-computer-pc-introduction",
-
+        "https://www.encyclopedia.com/science-and-technology/computers-and-electrical-engineering/computers-and-computing/analog-computer",
+        "https://www.encyclopedia.com/politics/encyclopedias-almanacs-transcripts-and-maps/computer-and-electronic-data-destruction",
+        "https://www.encyclopedia.com/humanities/encyclopedias-almanacs-transcripts-and-maps/computer-usage",
+        "https://www.encyclopedia.com/science-and-technology/computers-and-electrical-engineering/computers-and-computing/computer-program",
+        "https://www.encyclopedia.com/history/encyclopedias-almanacs-transcripts-and-maps/computer-revolution",
+        "https://www.encyclopedia.com/social-sciences/applied-and-social-sciences-magazines/computers-science-and-society",
+        "https://www.encyclopedia.com/computing/dictionaries-thesauruses-pictures-and-press-releases/embedded-computer",
+        "https://www.encyclopedia.com/computing/news-wires-white-papers-and-books/computer-scientists",
+        "https://www.encyclopedia.com/education/encyclopedias-almanacs-transcripts-and-maps/computer-programming",
+        "https://www.encyclopedia.com/science/encyclopedias-almanacs-transcripts-and-maps/development-computer-assisted-mathematics",
+        "https://www.encyclopedia.com/education/news-wires-white-papers-and-books/computer-analyst",
+        "https://www.encyclopedia.com/science/encyclopedias-almanacs-transcripts-and-maps/computer-languages",
+        "https://www.encyclopedia.com/social-sciences-and-law/law/crime-and-law-enforcement/computer-software-security",
+        "https://www.encyclopedia.com/science-and-technology/computers-and-electrical-engineering/computers-and-computing/computer-monitors",
+        "https://www.encyclopedia.com/science-and-technology/computers-and-electrical-engineering/computers-and-computing/computer-graphics",
+        "https://www.encyclopedia.com/science-and-technology/computers-and-electrical-engineering/computers-and-computing/computer-virus",
+        "https://www.encyclopedia.com/media/encyclopedias-almanacs-transcripts-and-maps/video-and-computer-games-and-internet",
+        "https://www.encyclopedia.com/literature-and-arts/performing-arts/music-theory-forms-and-instruments/computer-music",
+        "https://www.encyclopedia.com/economics/news-and-education-magazines/computer-software-engineer"
+      ]
+    },
+    {
+        "query": "Glasgow",
+      "relevant_documents": [
+        "https://www.encyclopedia.com/places/britain-ireland-france-and-low-countries/british-and-irish-political-geography/glasgow",
+        "https://www.encyclopedia.com/caregiving/dictionaries-thesauruses-pictures-and-press-releases/glasgow-scoring-system",
+        "https://www.encyclopedia.com/reference/encyclopedias-almanacs-transcripts-and-maps/glasgow-university",
+        "https://www.encyclopedia.com/women/encyclopedias-almanacs-transcripts-and-maps/glasgow-ellen-1873-1945",
+        "https://www.encyclopedia.com/education/dictionaries-thesauruses-pictures-and-press-releases/glasgow-school",
+        "https://www.encyclopedia.com/history/encyclopedias-almanacs-transcripts-and-maps/alfred-glasgow-encounter",
+        "https://www.encyclopedia.com/education/dictionaries-thesauruses-pictures-and-press-releases/glasgow-magistrate",
+        "https://www.encyclopedia.com/reference/encyclopedias-almanacs-transcripts-and-maps/new-glasgow",
+        "https://www.encyclopedia.com/arts/news-wires-white-papers-and-books/glasgow-ellen-anderson-gholson",
+        "https://www.encyclopedia.com/religion/encyclopedias-almanacs-transcripts-and-maps/jocelin-glasgow",
+        "https://www.encyclopedia.com/education/news-wires-white-papers-and-books/difference",
+        "https://www.encyclopedia.com/arts/educational-magazines/phillips-w-glasgow-1969",
+        "https://www.encyclopedia.com/religion/encyclopedias-almanacs-transcripts-and-maps/kentigern-mungo-st",
+        "https://www.encyclopedia.com/women/encyclopedias-almanacs-transcripts-and-maps/loftus-marie-1857-1940",
+        "https://www.encyclopedia.com/arts/educational-magazines/koste-virginia-glasgow-1924",
+        "https://www.encyclopedia.com/arts/educational-magazines/stern-kathryn-glasgow",
+        "https://www.encyclopedia.com/education/news-wires-white-papers-and-books/hanley-clifford-leonard-clark",
+        "https://www.encyclopedia.com/religion/encyclopedias-almanacs-transcripts-and-maps/schotz-benno",
+        "https://www.encyclopedia.com/arts/culture-magazines/walker-david-maxwell",
+        "https://www.encyclopedia.com/science/dictionaries-thesauruses-pictures-and-press-releases/penny-frederick"
       ]
     }
 ]
