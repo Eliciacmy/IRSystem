@@ -1,68 +1,19 @@
-{
-  "queries": [
+[
     {
       "query": "Computer",
-      "relevant_documents": ["Document1", "Document3", "Document7"]
-    },
-    {
-      "query": "Kingdom",
-      "relevant_documents": ["Document2", "Document4", "Document5", "Document9"]
-    },
-    {
-      "query": "Library",
-      "relevant_documents": ["Document1", "Document6", "Document8", "Document10"]
-    },
-    {
-      "query": "Empires",
-      "relevant_documents": ["Document1", "Document3", "Document7"]
-    },
-    {
-      "query": "Doctor",
-      "relevant_documents": ["Document2", "Document4", "Document5", "Document9"]
-    },
-    {
-      "query": "Hospital",
-      "relevant_documents": ["Document1", "Document6", "Document8", "Document10"]
-    },
-    {
-      "query": "Bachelor",
-      "relevant_documents": ["Document1", "Document3", "Document7"]
-    },
-    {
-      "query": "Degree",
-      "relevant_documents": ["Document2", "Document4", "Document5", "Document9"]
-    },
-    {
-      "query": "Internet",
-      "relevant_documents": ["Document1", "Document6", "Document8", "Document10"]
-    },
-    {
-      "query": "Things",
-      "relevant_documents": ["Document2", "Document4", "Document5", "Document9"]
-    },
-    {
-      "query": "Information",
-      "relevant_documents": ["Document1", "Document6", "Document8", "Document10"]
-    },
-    {
-      "query": "Info",
-      "relevant_documents": ["Document1", "Document3", "Document7"]
-    },
-    {
-      "query": "Retrieval",
-      "relevant_documents": ["Document2", "Document4", "Document5", "Document9"]
-    },
-    {
-      "query": "Retrieve",
-      "relevant_documents": ["Document1", "Document6", "Document8", "Document10"]
-    },
-    {
-      "query": "Universe",
-      "relevant_documents": ["Document2", "Document4", "Document5", "Document9"]
-    },
-    {
-      "query": "University",
-      "relevant_documents": ["Document1", "Document6", "Document8", "Document10"]
+      "relevant_documents": [
+        "https://www.encyclopedia.com/entrepreneurs/encyclopedias-almanacs-transcripts-and-maps/computers-and-computer-systems",
+        "https://www.encyclopedia.com/social-sciences/encyclopedias-almanacs-transcripts-and-maps/computers",
+        "https://www.encyclopedia.com/science-and-technology/computers-and-electrical-engineering/computers-and-computing/personal-computer",
+        "https://www.encyclopedia.com/science/science-magazines/computer-science-computer",
+        "https://www.encyclopedia.com/science-and-technology/computers-and-electrical-engineering/computers-and-computing/computer",
+        "https://www.encyclopedia.com/science-and-technology/computers-and-electrical-engineering/computers-and-computing/digital-computer",
+        "https://www.encyclopedia.com/science/encyclopedias-almanacs-transcripts-and-maps/history-development-and-importance-personal-computers",
+        "https://www.encyclopedia.com/history/dictionaries-thesauruses-pictures-and-press-releases/computers-and-computer-industry",
+        "https://www.encyclopedia.com/history/encyclopedias-almanacs-transcripts-and-maps/computer-industry",
+        "https://www.encyclopedia.com/computing/news-wires-white-papers-and-books/early-computers",
+        "https://www.encyclopedia.com/economics/encyclopedias-almanacs-transcripts-and-maps/personal-computer-pc-introduction",
+
+      ]
     }
-  ]
-}
+]
