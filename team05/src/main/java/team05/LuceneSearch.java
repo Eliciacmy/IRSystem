@@ -85,10 +85,10 @@ public class LuceneSearch {
             // Set boost value based on the field
             switch (field) {
                 case "docurl":
-                    boostValue = 0.5f;
+                    boostValue = 0.9f;
                     break;
                 case "title":
-                    boostValue = 0.9f;
+                    boostValue = 0.5f;
                     break;
                 case "content":
                     boostValue = 0.2f;
