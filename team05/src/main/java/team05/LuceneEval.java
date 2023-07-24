@@ -36,6 +36,9 @@ import org.apache.lucene.store.MMapDirectory;
 
 // Import JSON libraries
 import org.json.JSONObject;
+import org.jsoup.Jsoup;
+import org.jsoup.nodes.Element;
+import org.jsoup.select.Elements;
 import org.json.JSONArray;
 
 public class LuceneEval {
@@ -50,6 +53,30 @@ public class LuceneEval {
     private static final Analyzer analyzer = new StandardAnalyzer();
     
     public static void main(String[] args) {
+    	
+    	String url = "https://www.google.com/search?q=computer+site%3Aencyclopedia.com"; // Replace with the URL of the web page you want to extract links from
+
+        // Set to store the extracted links
+        Set<String> relevantDocsQuery1 = new HashSet<>();
+
+        try {
+            org.jsoup.nodes.Document document = Jsoup.connect(url).get();
+            Elements links = (Elements) document.select("a[href]");
+
+            for (Element link : links) {
+                String linkUrl = link.attr("abs:href"); // Get the absolute URL of the link
+                relevantDocsQuery1.add(linkUrl);
+            }
+            
+            System.out.println(relevantDocsQuery1);
+        } catch (IOException e) {
+            System.err.println("Error fetching content from the URL: " + e.getMessage());
+        }
+    	
+    	
+    	
+    	
+    	
     	try {
 //    		Path indexPath = Paths.get("team05/placeholder");
 //    		Directory index = new MMapDirectory(indexPath);
@@ -76,8 +103,8 @@ public class LuceneEval {
 //            String query19 = "University";
 
             // Relevant documents for evaluation (Assuming you have these URLs from the ground truth)
-            Set<String> relevantDocsQuery1 = new HashSet<>();
-            relevantDocsQuery1.add("https://www.google.com/search?q=computer+site%3Aencyclopedia.com");
+            //Set<String> relevantDocsQuery1 = new HashSet<>();
+            //relevantDocsQuery1.add("https://www.google.com/search?q=computer+site%3Aencyclopedia.com");
 
 //            Set<String> relevantDocsQuery2 = new HashSet<>();
 //            relevantDocsQuery2.add("https://www.google.com/search?q=glasgow+site%3Aencyclopedia.com");
@@ -155,9 +182,9 @@ public class LuceneEval {
 //            JSONArray result19 = searchQuery(query19, relevantDocsQuery19);
 
             // Display the results and evaluation metrics
-            System.out.println("Query 1 Results:");
-            System.out.println(result1.toString(2));
-            System.out.println();
+//            System.out.println("Query 1 Results:");
+//            System.out.println(result1.toString(2));
+//            System.out.println();
 
 //            System.out.println("Query 2 Results:");
 //            System.out.println(result2.toString(2));
@@ -276,6 +303,7 @@ public class LuceneEval {
             JSONObject jsonObject = result.optJSONObject(i);
             if (jsonObject != null) {
                 String url = jsonObject.optString("Url");
+                //System.out.println(url);
                 if (relevantDocs.contains(url)) {
                     retrievedRelevantDocs++;
                 }
@@ -283,6 +311,23 @@ public class LuceneEval {
         }
 
         return retrievedRelevantDocs;
+    }
+    
+ // Function to calculate Precision at K
+    private static double calculatePrecisionAtK(Set<String> relevantDocs, Set<String> searchResults, int k) {
+        int relevantCount = 0;
+        int retrievedCount = Math.min(k, searchResults.size());
+
+        for (String url : searchResults) {
+            if (relevantDocs.contains(url)) {
+                relevantCount++;
+            }
+            if (relevantCount == k) {
+                break;
+            }
+        }
+
+        return (double) relevantCount / retrievedCount;
     }
 
     // Method to perform the main search query

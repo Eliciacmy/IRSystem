@@ -1,0 +1,68 @@
+{
+  "queries": [
+    {
+      "query": "Computer",
+      "relevant_documents": ["Document1", "Document3", "Document7"]
+    },
+    {
+      "query": "Kingdom",
+      "relevant_documents": ["Document2", "Document4", "Document5", "Document9"]
+    },
+    {
+      "query": "Library",
+      "relevant_documents": ["Document1", "Document6", "Document8", "Document10"]
+    },
+    {
+      "query": "Empires",
+      "relevant_documents": ["Document1", "Document3", "Document7"]
+    },
+    {
+      "query": "Doctor",
+      "relevant_documents": ["Document2", "Document4", "Document5", "Document9"]
+    },
+    {
+      "query": "Hospital",
+      "relevant_documents": ["Document1", "Document6", "Document8", "Document10"]
+    },
+    {
+      "query": "Bachelor",
+      "relevant_documents": ["Document1", "Document3", "Document7"]
+    },
+    {
+      "query": "Degree",
+      "relevant_documents": ["Document2", "Document4", "Document5", "Document9"]
+    },
+    {
+      "query": "Internet",
+      "relevant_documents": ["Document1", "Document6", "Document8", "Document10"]
+    },
+    {
+      "query": "Things",
+      "relevant_documents": ["Document2", "Document4", "Document5", "Document9"]
+    },
+    {
+      "query": "Information",
+      "relevant_documents": ["Document1", "Document6", "Document8", "Document10"]
+    },
+    {
+      "query": "Info",
+      "relevant_documents": ["Document1", "Document3", "Document7"]
+    },
+    {
+      "query": "Retrieval",
+      "relevant_documents": ["Document2", "Document4", "Document5", "Document9"]
+    },
+    {
+      "query": "Retrieve",
+      "relevant_documents": ["Document1", "Document6", "Document8", "Document10"]
+    },
+    {
+      "query": "Universe",
+      "relevant_documents": ["Document2", "Document4", "Document5", "Document9"]
+    },
+    {
+      "query": "University",
+      "relevant_documents": ["Document1", "Document6", "Document8", "Document10"]
+    }
+  ]
+}
