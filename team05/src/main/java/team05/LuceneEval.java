@@ -107,16 +107,16 @@ public class LuceneEval {
 	// Method to add R5, R10, and R20 evaluation metrics to the JSON result
 	private static JSONArray addEvaluationMetrics(String queryText, JSONArray result, JSONArray metricsResult, Set<String> relevantDocs) {
 		int relevantDocsCount = relevantDocs.size();
-		int r5 = calculateRecallAtRank(result, relevantDocs, 5);
-		int r10 = calculateRecallAtRank(result, relevantDocs, 10);
-		int r20 = calculateRecallAtRank(result, relevantDocs, 20);
+		double r5 = calculateRecallAtRank(result, relevantDocs, 5);
+		double r10 = calculateRecallAtRank(result, relevantDocs, 10);
+		double r20 = calculateRecallAtRank(result, relevantDocs, 20);
 		
 		JSONObject metricsObject = new JSONObject();
 		metricsObject.put("Query", queryText);
 		metricsObject.put("TotalRelevantDocuments", relevantDocsCount);
 		metricsObject.put("R5", r5);
-//		metricsObject.put("R10", r10);
-//		metricsObject.put("R20", r20);
+		metricsObject.put("R10", r10);
+		metricsObject.put("R20", r20);
 
 		metricsResult.put(metricsObject);
 
@@ -124,20 +124,24 @@ public class LuceneEval {
 	}
 
 	// Method to calculate the recall at a given rank
-	private static int calculateRecallAtRank(JSONArray result, Set<String> relevantDocs, int rank) {
-		int retrievedRelevantDocs = 0;
+	private static double calculateRecallAtRank(JSONArray result, Set<String> relevantDocs, int rank) {
+	    int retrievedRelevantDocs = 0;
 
-		for (int i = 0; i < rank; i++) {
-			JSONObject jsonObject = result.optJSONObject(i);
-			if (jsonObject != null) {
-				String url = jsonObject.optString("Url");
-				if (relevantDocs.contains(url)) {
-					retrievedRelevantDocs++;
-				}
-			}
-		}
+	    for (int i = 0; i < rank; i++) {
+	        JSONObject jsonObject = result.optJSONObject(i);
+	        System.out.println(jsonObject);
+	        if (jsonObject != null) {
+	            String url = jsonObject.optString("Url");
+	            if (relevantDocs.contains(url)) {
+	                retrievedRelevantDocs++;
+	            }
+	        }
+	    }
 
-		return retrievedRelevantDocs;
+	    // Calculate recall using the formula: recall = retrieved relevant / total relevant
+	    double recall = (double) retrievedRelevantDocs / relevantDocs.size();
+
+	    return recall;
 	}
 
 	// Method to perform the main search query
@@ -159,7 +163,7 @@ public class LuceneEval {
 			// Set boost value based on the field
 			switch (field) {
 			case "docurl":
-				boostValue = 0.7f;
+				boostValue = 0.9f;
 				break;
 			case "title":
 				boostValue = 0.7f;
@@ -179,7 +183,7 @@ public class LuceneEval {
 		Query boostedQuery = booleanQueryBuilder.build();
 
 		// Search the index
-		TopDocs hits = searcher.search(boostedQuery, 5);
+		TopDocs hits = searcher.search(boostedQuery, 20);
 
 		return hits;
 	}
