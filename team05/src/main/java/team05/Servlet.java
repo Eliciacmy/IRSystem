@@ -14,35 +14,37 @@ import org.json.JSONObject;
 @WebServlet("/Search")
 public class Servlet extends HttpServlet {
 
-    @Override
-    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        // Get the query string from the request parameter
-        String queryString = req.getQueryString();
+	@Override
+	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		// Get the query string from the request parameter
+		String queryString = req.getQueryString();
 
-        // Initialize a JSON array to store the search results
-        JSONArray result = null;
+		// Initialize a JSON array to store the search results
+		JSONArray result = null;
 
-        try {
-            // Perform the search query using LuceneSearch class and get the results in a JSON array
-            result = LuceneSearch.searchQuery(queryString);
+		try {
+			// Perform the search query using LuceneSearch class and get the results in a
+			// JSON array
+			result = LuceneSearch.searchQuery(queryString);
 
-        } catch (Exception e) {
-            // If an error occurs during the search, create a JSON object with the error message
-            JSONObject errorObject = new JSONObject();
-            errorObject.put("Error", e.toString());
+		} catch (Exception e) {
+			// If an error occurs during the search, create a JSON object with the error
+			// message
+			JSONObject errorObject = new JSONObject();
+			errorObject.put("Error", e.toString());
 
-            // Create a JSON array with the error object
-            result = new JSONArray();
-            result.put(errorObject);
-        }
+			// Create a JSON array with the error object
+			result = new JSONArray();
+			result.put(errorObject);
+		}
 
-        // Convert the JSON array to a string
-        String jsonResult = result.toString();
+		// Convert the JSON array to a string
+		String jsonResult = result.toString();
 
-        // Set the response content type to indicate that the response is in JSON format
-        resp.setContentType("application/json");
+		// Set the response content type to indicate that the response is in JSON format
+		resp.setContentType("application/json");
 
-        // Write the JSON result to the response
-        resp.getWriter().write(jsonResult);
-    }
+		// Write the JSON result to the response
+		resp.getWriter().write(jsonResult);
+	}
 }

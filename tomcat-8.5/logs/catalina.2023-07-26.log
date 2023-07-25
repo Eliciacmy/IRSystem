@@ -1,0 +1,203 @@
+26-Jul-2023 00:35:01.326 INFO [ContainerBackgroundProcessor[StandardEngine[Catalina]]] org.apache.catalina.startup.HostConfig.undeploy Undeploying context [/React]
+26-Jul-2023 00:35:01.489 INFO [localhost-startStop-40] org.apache.catalina.startup.HostConfig.deployWAR Deploying web application archive [C:\Users\Elicia\eclipse-workspace\IRSystem\tomcat-8.5\webapps\React.war]
+26-Jul-2023 00:35:03.297 INFO [localhost-startStop-40] org.apache.jasper.servlet.TldScanner.scanJars At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+26-Jul-2023 00:35:03.306 INFO [localhost-startStop-40] org.apache.catalina.startup.HostConfig.deployWAR Deployment of web application archive [C:\Users\Elicia\eclipse-workspace\IRSystem\tomcat-8.5\webapps\React.war] has finished in [1,817] ms
+26-Jul-2023 00:35:05.665 INFO [http-nio-8080-exec-278] org.apache.lucene.store.MemorySegmentIndexInputProvider.<init> Using MemorySegmentIndexInput with Java 20; to disable start with -Dorg.apache.lucene.store.MMapDirectory.enableMemorySegments=false
+26-Jul-2023 00:43:54.534 INFO [ContainerBackgroundProcessor[StandardEngine[Catalina]]] org.apache.catalina.startup.HostConfig.undeploy Undeploying context [/React]
+26-Jul-2023 00:43:54.584 INFO [localhost-startStop-41] org.apache.catalina.startup.HostConfig.deployWAR Deploying web application archive [C:\Users\Elicia\eclipse-workspace\IRSystem\tomcat-8.5\webapps\React.war]
+26-Jul-2023 00:43:57.341 INFO [localhost-startStop-41] org.apache.jasper.servlet.TldScanner.scanJars At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+26-Jul-2023 00:43:57.353 INFO [localhost-startStop-41] org.apache.catalina.startup.HostConfig.deployWAR Deployment of web application archive [C:\Users\Elicia\eclipse-workspace\IRSystem\tomcat-8.5\webapps\React.war] has finished in [2,769] ms
+26-Jul-2023 00:44:08.742 INFO [http-nio-8080-exec-288] org.apache.lucene.store.MemorySegmentIndexInputProvider.<init> Using MemorySegmentIndexInput with Java 20; to disable start with -Dorg.apache.lucene.store.MMapDirectory.enableMemorySegments=false
+26-Jul-2023 00:47:07.670 INFO [ContainerBackgroundProcessor[StandardEngine[Catalina]]] org.apache.catalina.startup.HostConfig.undeploy Undeploying context [/React]
+26-Jul-2023 00:47:07.754 INFO [localhost-startStop-42] org.apache.catalina.startup.HostConfig.deployWAR Deploying web application archive [C:\Users\Elicia\eclipse-workspace\IRSystem\tomcat-8.5\webapps\React.war]
+26-Jul-2023 00:47:11.862 INFO [localhost-startStop-42] org.apache.jasper.servlet.TldScanner.scanJars At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+26-Jul-2023 00:47:11.874 INFO [localhost-startStop-42] org.apache.catalina.startup.HostConfig.deployWAR Deployment of web application archive [C:\Users\Elicia\eclipse-workspace\IRSystem\tomcat-8.5\webapps\React.war] has finished in [4,122] ms
+26-Jul-2023 00:47:12.079 INFO [http-nio-8080-exec-293] org.apache.lucene.store.MemorySegmentIndexInputProvider.<init> Using MemorySegmentIndexInput with Java 20; to disable start with -Dorg.apache.lucene.store.MMapDirectory.enableMemorySegments=false
+26-Jul-2023 00:48:12.442 INFO [ContainerBackgroundProcessor[StandardEngine[Catalina]]] org.apache.catalina.startup.HostConfig.undeploy Undeploying context [/React]
+26-Jul-2023 00:48:12.512 INFO [localhost-startStop-43] org.apache.catalina.startup.HostConfig.deployWAR Deploying web application archive [C:\Users\Elicia\eclipse-workspace\IRSystem\tomcat-8.5\webapps\React.war]
+26-Jul-2023 00:48:14.759 INFO [localhost-startStop-43] org.apache.jasper.servlet.TldScanner.scanJars At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+26-Jul-2023 00:48:14.771 INFO [localhost-startStop-43] org.apache.catalina.startup.HostConfig.deployWAR Deployment of web application archive [C:\Users\Elicia\eclipse-workspace\IRSystem\tomcat-8.5\webapps\React.war] has finished in [2,257] ms
+26-Jul-2023 00:48:19.472 INFO [http-nio-8080-exec-308] org.apache.lucene.store.MemorySegmentIndexInputProvider.<init> Using MemorySegmentIndexInput with Java 20; to disable start with -Dorg.apache.lucene.store.MMapDirectory.enableMemorySegments=false
+26-Jul-2023 00:48:54.818 INFO [ContainerBackgroundProcessor[StandardEngine[Catalina]]] org.apache.catalina.startup.HostConfig.undeploy Undeploying context [/React]
+26-Jul-2023 00:48:55.038 INFO [localhost-startStop-44] org.apache.catalina.startup.HostConfig.deployWAR Deploying web application archive [C:\Users\Elicia\eclipse-workspace\IRSystem\tomcat-8.5\webapps\React.war]
+26-Jul-2023 00:48:56.735 INFO [localhost-startStop-44] org.apache.jasper.servlet.TldScanner.scanJars At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+26-Jul-2023 00:48:56.745 INFO [localhost-startStop-44] org.apache.catalina.startup.HostConfig.deployWAR Deployment of web application archive [C:\Users\Elicia\eclipse-workspace\IRSystem\tomcat-8.5\webapps\React.war] has finished in [1,707] ms
+26-Jul-2023 00:49:10.612 INFO [http-nio-8080-exec-312] org.apache.lucene.store.MemorySegmentIndexInputProvider.<init> Using MemorySegmentIndexInput with Java 20; to disable start with -Dorg.apache.lucene.store.MMapDirectory.enableMemorySegments=false
+26-Jul-2023 00:51:06.940 INFO [ContainerBackgroundProcessor[StandardEngine[Catalina]]] org.apache.catalina.startup.HostConfig.undeploy Undeploying context [/React]
+26-Jul-2023 00:51:06.963 INFO [localhost-startStop-45] org.apache.catalina.startup.HostConfig.deployWAR Deploying web application archive [C:\Users\Elicia\eclipse-workspace\IRSystem\tomcat-8.5\webapps\React.war]
+26-Jul-2023 00:51:07.940 INFO [localhost-startStop-45] org.apache.jasper.servlet.TldScanner.scanJars At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+26-Jul-2023 00:51:07.945 INFO [localhost-startStop-45] org.apache.catalina.startup.HostConfig.deployWAR Deployment of web application archive [C:\Users\Elicia\eclipse-workspace\IRSystem\tomcat-8.5\webapps\React.war] has finished in [982] ms
+26-Jul-2023 00:51:10.205 INFO [http-nio-8080-exec-301] org.apache.lucene.store.MemorySegmentIndexInputProvider.<init> Using MemorySegmentIndexInput with Java 20; to disable start with -Dorg.apache.lucene.store.MMapDirectory.enableMemorySegments=false
+26-Jul-2023 00:54:28.320 INFO [ContainerBackgroundProcessor[StandardEngine[Catalina]]] org.apache.catalina.startup.HostConfig.undeploy Undeploying context [/React]
+26-Jul-2023 00:54:28.350 INFO [localhost-startStop-46] org.apache.catalina.startup.HostConfig.deployWAR Deploying web application archive [C:\Users\Elicia\eclipse-workspace\IRSystem\tomcat-8.5\webapps\React.war]
+26-Jul-2023 00:54:29.405 INFO [localhost-startStop-46] org.apache.jasper.servlet.TldScanner.scanJars At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+26-Jul-2023 00:54:29.411 INFO [localhost-startStop-46] org.apache.catalina.startup.HostConfig.deployWAR Deployment of web application archive [C:\Users\Elicia\eclipse-workspace\IRSystem\tomcat-8.5\webapps\React.war] has finished in [1,061] ms
+26-Jul-2023 00:54:31.427 INFO [http-nio-8080-exec-322] org.apache.lucene.store.MemorySegmentIndexInputProvider.<init> Using MemorySegmentIndexInput with Java 20; to disable start with -Dorg.apache.lucene.store.MMapDirectory.enableMemorySegments=false
+26-Jul-2023 00:57:50.084 INFO [ContainerBackgroundProcessor[StandardEngine[Catalina]]] org.apache.catalina.startup.HostConfig.undeploy Undeploying context [/React]
+26-Jul-2023 00:57:50.204 INFO [localhost-startStop-47] org.apache.catalina.startup.HostConfig.deployWAR Deploying web application archive [C:\Users\Elicia\eclipse-workspace\IRSystem\tomcat-8.5\webapps\React.war]
+26-Jul-2023 00:57:52.294 INFO [localhost-startStop-47] org.apache.jasper.servlet.TldScanner.scanJars At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+26-Jul-2023 00:57:52.309 INFO [localhost-startStop-47] org.apache.catalina.startup.HostConfig.deployWAR Deployment of web application archive [C:\Users\Elicia\eclipse-workspace\IRSystem\tomcat-8.5\webapps\React.war] has finished in [2,105] ms
+26-Jul-2023 00:58:02.319 INFO [ContainerBackgroundProcessor[StandardEngine[Catalina]]] org.apache.catalina.startup.HostConfig.undeploy Undeploying context [/React]
+26-Jul-2023 00:58:02.624 INFO [localhost-startStop-48] org.apache.catalina.startup.HostConfig.deployWAR Deploying web application archive [C:\Users\Elicia\eclipse-workspace\IRSystem\tomcat-8.5\webapps\React.war]
+26-Jul-2023 00:58:04.710 INFO [localhost-startStop-48] org.apache.jasper.servlet.TldScanner.scanJars At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+26-Jul-2023 00:58:04.950 INFO [localhost-startStop-48] org.apache.catalina.startup.HostConfig.deployWAR Deployment of web application archive [C:\Users\Elicia\eclipse-workspace\IRSystem\tomcat-8.5\webapps\React.war] has finished in [2,313] ms
+26-Jul-2023 00:58:08.477 INFO [http-nio-8080-exec-324] org.apache.lucene.store.MemorySegmentIndexInputProvider.<init> Using MemorySegmentIndexInput with Java 20; to disable start with -Dorg.apache.lucene.store.MMapDirectory.enableMemorySegments=false
+26-Jul-2023 01:14:16.432 INFO [ContainerBackgroundProcessor[StandardEngine[Catalina]]] org.apache.catalina.startup.HostConfig.undeploy Undeploying context [/React]
+26-Jul-2023 01:14:16.476 INFO [localhost-startStop-49] org.apache.catalina.startup.HostConfig.deployWAR Deploying web application archive [C:\Users\Elicia\eclipse-workspace\IRSystem\tomcat-8.5\webapps\React.war]
+26-Jul-2023 01:14:19.022 INFO [localhost-startStop-49] org.apache.jasper.servlet.TldScanner.scanJars At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+26-Jul-2023 01:14:19.034 INFO [localhost-startStop-49] org.apache.catalina.startup.HostConfig.deployWAR Deployment of web application archive [C:\Users\Elicia\eclipse-workspace\IRSystem\tomcat-8.5\webapps\React.war] has finished in [2,558] ms
+26-Jul-2023 01:14:29.042 INFO [ContainerBackgroundProcessor[StandardEngine[Catalina]]] org.apache.catalina.startup.HostConfig.undeploy Undeploying context [/React]
+26-Jul-2023 01:14:29.094 INFO [localhost-startStop-50] org.apache.catalina.startup.HostConfig.deployWAR Deploying web application archive [C:\Users\Elicia\eclipse-workspace\IRSystem\tomcat-8.5\webapps\React.war]
+26-Jul-2023 01:14:30.163 INFO [localhost-startStop-50] org.apache.jasper.servlet.TldScanner.scanJars At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+26-Jul-2023 01:14:30.197 INFO [localhost-startStop-50] org.apache.catalina.startup.HostConfig.deployWAR Deployment of web application archive [C:\Users\Elicia\eclipse-workspace\IRSystem\tomcat-8.5\webapps\React.war] has finished in [1,102] ms
+26-Jul-2023 01:15:19.255 INFO [http-nio-8080-exec-339] org.apache.lucene.store.MemorySegmentIndexInputProvider.<init> Using MemorySegmentIndexInput with Java 20; to disable start with -Dorg.apache.lucene.store.MMapDirectory.enableMemorySegments=false
+26-Jul-2023 01:16:00.320 INFO [ContainerBackgroundProcessor[StandardEngine[Catalina]]] org.apache.catalina.startup.HostConfig.undeploy Undeploying context [/React]
+26-Jul-2023 01:16:00.360 INFO [localhost-startStop-51] org.apache.catalina.startup.HostConfig.deployWAR Deploying web application archive [C:\Users\Elicia\eclipse-workspace\IRSystem\tomcat-8.5\webapps\React.war]
+26-Jul-2023 01:16:01.560 INFO [localhost-startStop-51] org.apache.jasper.servlet.TldScanner.scanJars At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+26-Jul-2023 01:16:01.572 INFO [localhost-startStop-51] org.apache.catalina.startup.HostConfig.deployWAR Deployment of web application archive [C:\Users\Elicia\eclipse-workspace\IRSystem\tomcat-8.5\webapps\React.war] has finished in [1,211] ms
+26-Jul-2023 01:16:03.086 INFO [http-nio-8080-exec-337] org.apache.lucene.store.MemorySegmentIndexInputProvider.<init> Using MemorySegmentIndexInput with Java 20; to disable start with -Dorg.apache.lucene.store.MMapDirectory.enableMemorySegments=false
+26-Jul-2023 01:16:41.634 INFO [ContainerBackgroundProcessor[StandardEngine[Catalina]]] org.apache.catalina.startup.HostConfig.undeploy Undeploying context [/React]
+26-Jul-2023 01:16:41.725 INFO [localhost-startStop-52] org.apache.catalina.startup.HostConfig.deployWAR Deploying web application archive [C:\Users\Elicia\eclipse-workspace\IRSystem\tomcat-8.5\webapps\React.war]
+26-Jul-2023 01:16:44.037 INFO [localhost-startStop-52] org.apache.jasper.servlet.TldScanner.scanJars At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+26-Jul-2023 01:16:44.057 INFO [localhost-startStop-52] org.apache.catalina.startup.HostConfig.deployWAR Deployment of web application archive [C:\Users\Elicia\eclipse-workspace\IRSystem\tomcat-8.5\webapps\React.war] has finished in [2,334] ms
+26-Jul-2023 02:01:37.232 INFO [http-nio-8080-exec-352] org.apache.lucene.store.MemorySegmentIndexInputProvider.<init> Using MemorySegmentIndexInput with Java 20; to disable start with -Dorg.apache.lucene.store.MMapDirectory.enableMemorySegments=false
+26-Jul-2023 02:01:37.947 INFO [ContainerBackgroundProcessor[StandardEngine[Catalina]]] org.apache.catalina.startup.HostConfig.undeploy Undeploying context [/React]
+26-Jul-2023 02:01:37.952 INFO [ContainerBackgroundProcessor[StandardEngine[Catalina]]] org.apache.catalina.core.StandardWrapper.unload Waiting for [1] instance(s) to be deallocated for Servlet [team05.Servlet]
+26-Jul-2023 02:01:39.168 INFO [ContainerBackgroundProcessor[StandardEngine[Catalina]]] org.apache.catalina.core.StandardWrapper.unload Waiting for [1] instance(s) to be deallocated for Servlet [team05.Servlet]
+26-Jul-2023 02:01:40.500 INFO [ContainerBackgroundProcessor[StandardEngine[Catalina]]] org.apache.catalina.core.StandardWrapper.unload Waiting for [1] instance(s) to be deallocated for Servlet [team05.Servlet]
+26-Jul-2023 02:01:40.622 WARNING [ContainerBackgroundProcessor[StandardEngine[Catalina]]] org.apache.catalina.loader.WebappClassLoaderBase.clearReferencesThreads The web application [React] is still processing a request that has yet to finish. This is very likely to create a memory leak. You can control the time allowed for requests to finish by using the unloadDelay attribute of the standard Context implementation. Stack trace of request processing thread:[
+ java.base/java.util.regex.Pattern.atom(Pattern.java:2322)
+ java.base/java.util.regex.Pattern.sequence(Pattern.java:2195)
+ java.base/java.util.regex.Pattern.expr(Pattern.java:2105)
+ java.base/java.util.regex.Pattern.compile(Pattern.java:1805)
+ java.base/java.util.regex.Pattern.<init>(Pattern.java:1452)
+ java.base/java.util.regex.Pattern.compile(Pattern.java:1091)
+ java.base/java.lang.String.replaceAll(String.java:2955)
+ team05.LuceneSearch.getSynonyms(LuceneSearch.java:229)
+ team05.LuceneSearch.queryJson(LuceneSearch.java:169)
+ team05.LuceneSearch.queryResult(LuceneSearch.java:121)
+ team05.LuceneSearch.searchQuery(LuceneSearch.java:59)
+ team05.Servlet.doGet(Servlet.java:27)
+ javax.servlet.http.HttpServlet.service(HttpServlet.java:489)
+ javax.servlet.http.HttpServlet.service(HttpServlet.java:583)
+ org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:212)
+ org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:156)
+ org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:51)
+ org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:181)
+ org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:156)
+ org.apache.catalina.filters.CorsFilter.handleSimpleCORS(CorsFilter.java:240)
+ org.apache.catalina.filters.CorsFilter.doFilter(CorsFilter.java:147)
+ org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:181)
+ org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:156)
+ org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:167)
+ org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:90)
+ org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:483)
+ org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:130)
+ org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:93)
+ org.apache.catalina.valves.AbstractAccessLogValve.invoke(AbstractAccessLogValve.java:682)
+ org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74)
+ org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:343)
+ org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:617)
+ org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:63)
+ org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:932)
+ org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1695)
+ org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52)
+ org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1191)
+ org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659)
+ org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
+ java.base/java.lang.Thread.run(Thread.java:1623)]
+26-Jul-2023 02:01:40.721 INFO [localhost-startStop-53] org.apache.catalina.startup.HostConfig.deployWAR Deploying web application archive [C:\Users\Elicia\eclipse-workspace\IRSystem\tomcat-8.5\webapps\React.war]
+26-Jul-2023 02:01:40.886 INFO [http-nio-8080-exec-352] org.apache.catalina.loader.WebappClassLoaderBase.checkStateForResourceLoading Illegal access: this web application instance has been stopped already. Could not load [org.json.JSONString]. The following stack trace is thrown for debugging purposes as well as to attempt to terminate the thread which caused the illegal access.
+	java.lang.IllegalStateException: Illegal access: this web application instance has been stopped already. Could not load [org.json.JSONString]. The following stack trace is thrown for debugging purposes as well as to attempt to terminate the thread which caused the illegal access.
+		at org.apache.catalina.loader.WebappClassLoaderBase.checkStateForResourceLoading(WebappClassLoaderBase.java:1440)
+		at org.apache.catalina.loader.WebappClassLoaderBase.checkStateForClassLoading(WebappClassLoaderBase.java:1428)
+		at org.apache.catalina.loader.WebappClassLoaderBase.loadClass(WebappClassLoaderBase.java:1267)
+		at org.apache.catalina.loader.WebappClassLoaderBase.loadClass(WebappClassLoaderBase.java:1228)
+		at org.json.JSONObject.writeValue(JSONObject.java:2517)
+		at org.json.JSONArray.write(JSONArray.java:1528)
+		at org.json.JSONArray.toString(JSONArray.java:1455)
+		at org.json.JSONArray.toString(JSONArray.java:1418)
+		at team05.Servlet.doGet(Servlet.java:40)
+		at javax.servlet.http.HttpServlet.service(HttpServlet.java:489)
+		at javax.servlet.http.HttpServlet.service(HttpServlet.java:583)
+		at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:212)
+		at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:156)
+		at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:51)
+		at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:181)
+		at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:156)
+		at org.apache.catalina.filters.CorsFilter.handleSimpleCORS(CorsFilter.java:240)
+		at org.apache.catalina.filters.CorsFilter.doFilter(CorsFilter.java:147)
+		at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:181)
+		at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:156)
+		at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:167)
+		at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:90)
+		at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:483)
+		at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:130)
+		at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:93)
+		at org.apache.catalina.valves.AbstractAccessLogValve.invoke(AbstractAccessLogValve.java:682)
+		at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74)
+		at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:343)
+		at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:617)
+		at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:63)
+		at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:932)
+		at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1695)
+		at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52)
+		at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1191)
+		at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659)
+		at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
+		at java.base/java.lang.Thread.run(Thread.java:1623)
+26-Jul-2023 02:01:43.677 INFO [localhost-startStop-53] org.apache.jasper.servlet.TldScanner.scanJars At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+26-Jul-2023 02:01:43.694 INFO [localhost-startStop-53] org.apache.catalina.startup.HostConfig.deployWAR Deployment of web application archive [C:\Users\Elicia\eclipse-workspace\IRSystem\tomcat-8.5\webapps\React.war] has finished in [2,972] ms
+26-Jul-2023 02:01:44.392 INFO [http-nio-8080-exec-356] org.apache.lucene.store.MemorySegmentIndexInputProvider.<init> Using MemorySegmentIndexInput with Java 20; to disable start with -Dorg.apache.lucene.store.MMapDirectory.enableMemorySegments=false
+26-Jul-2023 02:06:54.458 INFO [ContainerBackgroundProcessor[StandardEngine[Catalina]]] org.apache.catalina.startup.HostConfig.undeploy Undeploying context [/React]
+26-Jul-2023 02:06:54.522 INFO [localhost-startStop-54] org.apache.catalina.startup.HostConfig.deployWAR Deploying web application archive [C:\Users\Elicia\eclipse-workspace\IRSystem\tomcat-8.5\webapps\React.war]
+26-Jul-2023 02:06:56.978 INFO [localhost-startStop-54] org.apache.jasper.servlet.TldScanner.scanJars At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+26-Jul-2023 02:06:56.986 INFO [localhost-startStop-54] org.apache.catalina.startup.HostConfig.deployWAR Deployment of web application archive [C:\Users\Elicia\eclipse-workspace\IRSystem\tomcat-8.5\webapps\React.war] has finished in [2,464] ms
+26-Jul-2023 02:07:23.666 INFO [http-nio-8080-exec-367] org.apache.lucene.store.MemorySegmentIndexInputProvider.<init> Using MemorySegmentIndexInput with Java 20; to disable start with -Dorg.apache.lucene.store.MMapDirectory.enableMemorySegments=false
+26-Jul-2023 02:10:27.777 INFO [ContainerBackgroundProcessor[StandardEngine[Catalina]]] org.apache.catalina.startup.HostConfig.undeploy Undeploying context [/React]
+26-Jul-2023 02:10:27.909 INFO [localhost-startStop-55] org.apache.catalina.startup.HostConfig.deployWAR Deploying web application archive [C:\Users\Elicia\eclipse-workspace\IRSystem\tomcat-8.5\webapps\React.war]
+26-Jul-2023 02:10:31.354 INFO [localhost-startStop-55] org.apache.jasper.servlet.TldScanner.scanJars At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+26-Jul-2023 02:10:31.365 INFO [localhost-startStop-55] org.apache.catalina.startup.HostConfig.deployWAR Deployment of web application archive [C:\Users\Elicia\eclipse-workspace\IRSystem\tomcat-8.5\webapps\React.war] has finished in [3,455] ms
+26-Jul-2023 02:10:43.625 INFO [http-nio-8080-exec-375] org.apache.lucene.store.MemorySegmentIndexInputProvider.<init> Using MemorySegmentIndexInput with Java 20; to disable start with -Dorg.apache.lucene.store.MMapDirectory.enableMemorySegments=false
+26-Jul-2023 02:13:11.753 INFO [ContainerBackgroundProcessor[StandardEngine[Catalina]]] org.apache.catalina.startup.HostConfig.undeploy Undeploying context [/React]
+26-Jul-2023 02:13:11.882 INFO [localhost-startStop-56] org.apache.catalina.startup.HostConfig.deployWAR Deploying web application archive [C:\Users\Elicia\eclipse-workspace\IRSystem\tomcat-8.5\webapps\React.war]
+26-Jul-2023 02:13:14.759 INFO [localhost-startStop-56] org.apache.jasper.servlet.TldScanner.scanJars At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+26-Jul-2023 02:13:14.822 INFO [localhost-startStop-56] org.apache.catalina.startup.HostConfig.deployWAR Deployment of web application archive [C:\Users\Elicia\eclipse-workspace\IRSystem\tomcat-8.5\webapps\React.war] has finished in [2,939] ms
+26-Jul-2023 02:13:24.870 INFO [ContainerBackgroundProcessor[StandardEngine[Catalina]]] org.apache.catalina.startup.HostConfig.undeploy Undeploying context [/React]
+26-Jul-2023 02:13:24.963 INFO [localhost-startStop-57] org.apache.catalina.startup.HostConfig.deployWAR Deploying web application archive [C:\Users\Elicia\eclipse-workspace\IRSystem\tomcat-8.5\webapps\React.war]
+26-Jul-2023 02:13:27.544 INFO [localhost-startStop-57] org.apache.jasper.servlet.TldScanner.scanJars At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+26-Jul-2023 02:13:27.551 INFO [localhost-startStop-57] org.apache.catalina.startup.HostConfig.deployWAR Deployment of web application archive [C:\Users\Elicia\eclipse-workspace\IRSystem\tomcat-8.5\webapps\React.war] has finished in [2,587] ms
+26-Jul-2023 02:13:33.765 INFO [http-nio-8080-exec-364] org.apache.lucene.store.MemorySegmentIndexInputProvider.<init> Using MemorySegmentIndexInput with Java 20; to disable start with -Dorg.apache.lucene.store.MMapDirectory.enableMemorySegments=false
+26-Jul-2023 02:16:27.878 INFO [ContainerBackgroundProcessor[StandardEngine[Catalina]]] org.apache.catalina.startup.HostConfig.undeploy Undeploying context [/React]
+26-Jul-2023 02:16:27.940 INFO [localhost-startStop-58] org.apache.catalina.startup.HostConfig.deployWAR Deploying web application archive [C:\Users\Elicia\eclipse-workspace\IRSystem\tomcat-8.5\webapps\React.war]
+26-Jul-2023 02:16:30.587 INFO [localhost-startStop-58] org.apache.jasper.servlet.TldScanner.scanJars At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+26-Jul-2023 02:16:30.602 INFO [localhost-startStop-58] org.apache.catalina.startup.HostConfig.deployWAR Deployment of web application archive [C:\Users\Elicia\eclipse-workspace\IRSystem\tomcat-8.5\webapps\React.war] has finished in [2,661] ms
+26-Jul-2023 02:16:41.945 INFO [http-nio-8080-exec-384] org.apache.lucene.store.MemorySegmentIndexInputProvider.<init> Using MemorySegmentIndexInput with Java 20; to disable start with -Dorg.apache.lucene.store.MMapDirectory.enableMemorySegments=false
+26-Jul-2023 02:18:40.813 INFO [ContainerBackgroundProcessor[StandardEngine[Catalina]]] org.apache.catalina.startup.HostConfig.undeploy Undeploying context [/React]
+26-Jul-2023 02:18:40.884 INFO [localhost-startStop-59] org.apache.catalina.startup.HostConfig.deployWAR Deploying web application archive [C:\Users\Elicia\eclipse-workspace\IRSystem\tomcat-8.5\webapps\React.war]
+26-Jul-2023 02:18:42.778 INFO [localhost-startStop-59] org.apache.jasper.servlet.TldScanner.scanJars At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+26-Jul-2023 02:18:42.802 INFO [localhost-startStop-59] org.apache.catalina.startup.HostConfig.deployWAR Deployment of web application archive [C:\Users\Elicia\eclipse-workspace\IRSystem\tomcat-8.5\webapps\React.war] has finished in [1,918] ms
+26-Jul-2023 02:18:43.981 INFO [http-nio-8080-exec-390] org.apache.lucene.store.MemorySegmentIndexInputProvider.<init> Using MemorySegmentIndexInput with Java 20; to disable start with -Dorg.apache.lucene.store.MMapDirectory.enableMemorySegments=false
+26-Jul-2023 02:20:02.938 INFO [ContainerBackgroundProcessor[StandardEngine[Catalina]]] org.apache.catalina.startup.HostConfig.undeploy Undeploying context [/React]
+26-Jul-2023 02:20:03.014 INFO [localhost-startStop-60] org.apache.catalina.startup.HostConfig.deployWAR Deploying web application archive [C:\Users\Elicia\eclipse-workspace\IRSystem\tomcat-8.5\webapps\React.war]
+26-Jul-2023 02:20:05.532 INFO [localhost-startStop-60] org.apache.jasper.servlet.TldScanner.scanJars At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+26-Jul-2023 02:20:05.549 INFO [localhost-startStop-60] org.apache.catalina.startup.HostConfig.deployWAR Deployment of web application archive [C:\Users\Elicia\eclipse-workspace\IRSystem\tomcat-8.5\webapps\React.war] has finished in [2,535] ms
+26-Jul-2023 02:20:10.225 INFO [http-nio-8080-exec-389] org.apache.lucene.store.MemorySegmentIndexInputProvider.<init> Using MemorySegmentIndexInput with Java 20; to disable start with -Dorg.apache.lucene.store.MMapDirectory.enableMemorySegments=false
+26-Jul-2023 02:35:17.450 INFO [ContainerBackgroundProcessor[StandardEngine[Catalina]]] org.apache.catalina.startup.HostConfig.undeploy Undeploying context [/React]
+26-Jul-2023 02:35:17.518 INFO [localhost-startStop-61] org.apache.catalina.startup.HostConfig.deployWAR Deploying web application archive [C:\Users\Elicia\eclipse-workspace\IRSystem\tomcat-8.5\webapps\React.war]
+26-Jul-2023 02:35:20.443 INFO [localhost-startStop-61] org.apache.jasper.servlet.TldScanner.scanJars At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+26-Jul-2023 02:35:20.460 INFO [localhost-startStop-61] org.apache.catalina.startup.HostConfig.deployWAR Deployment of web application archive [C:\Users\Elicia\eclipse-workspace\IRSystem\tomcat-8.5\webapps\React.war] has finished in [2,940] ms
+26-Jul-2023 02:35:25.567 INFO [http-nio-8080-exec-400] org.apache.lucene.store.MemorySegmentIndexInputProvider.<init> Using MemorySegmentIndexInput with Java 20; to disable start with -Dorg.apache.lucene.store.MMapDirectory.enableMemorySegments=false
+26-Jul-2023 03:26:38.170 INFO [ContainerBackgroundProcessor[StandardEngine[Catalina]]] org.apache.catalina.startup.HostConfig.undeploy Undeploying context [/React]
+26-Jul-2023 03:26:38.542 INFO [localhost-startStop-62] org.apache.catalina.startup.HostConfig.deployWAR Deploying web application archive [C:\Users\Elicia\eclipse-workspace\IRSystem\tomcat-8.5\webapps\React.war]
+26-Jul-2023 03:26:41.146 INFO [localhost-startStop-62] org.apache.jasper.servlet.TldScanner.scanJars At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+26-Jul-2023 03:26:41.164 INFO [localhost-startStop-62] org.apache.catalina.startup.HostConfig.deployWAR Deployment of web application archive [C:\Users\Elicia\eclipse-workspace\IRSystem\tomcat-8.5\webapps\React.war] has finished in [2,621] ms
+26-Jul-2023 03:27:01.201 INFO [ContainerBackgroundProcessor[StandardEngine[Catalina]]] org.apache.catalina.startup.HostConfig.undeploy Undeploying context [/React]
+26-Jul-2023 03:27:01.247 INFO [localhost-startStop-63] org.apache.catalina.startup.HostConfig.deployWAR Deploying web application archive [C:\Users\Elicia\eclipse-workspace\IRSystem\tomcat-8.5\webapps\React.war]
+26-Jul-2023 03:27:03.418 INFO [localhost-startStop-63] org.apache.jasper.servlet.TldScanner.scanJars At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+26-Jul-2023 03:27:03.453 INFO [localhost-startStop-63] org.apache.catalina.startup.HostConfig.deployWAR Deployment of web application archive [C:\Users\Elicia\eclipse-workspace\IRSystem\tomcat-8.5\webapps\React.war] has finished in [2,206] ms
+26-Jul-2023 03:27:33.505 INFO [ContainerBackgroundProcessor[StandardEngine[Catalina]]] org.apache.catalina.startup.HostConfig.undeploy Undeploying context [/React]
+26-Jul-2023 03:27:33.659 INFO [localhost-startStop-64] org.apache.catalina.startup.HostConfig.deployWAR Deploying web application archive [C:\Users\Elicia\eclipse-workspace\IRSystem\tomcat-8.5\webapps\React.war]
+26-Jul-2023 03:27:36.543 INFO [localhost-startStop-64] org.apache.jasper.servlet.TldScanner.scanJars At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+26-Jul-2023 03:27:36.554 INFO [localhost-startStop-64] org.apache.catalina.startup.HostConfig.deployWAR Deployment of web application archive [C:\Users\Elicia\eclipse-workspace\IRSystem\tomcat-8.5\webapps\React.war] has finished in [2,895] ms
+26-Jul-2023 03:29:59.220 INFO [http-nio-8080-exec-420] org.apache.lucene.store.MemorySegmentIndexInputProvider.<init> Using MemorySegmentIndexInput with Java 20; to disable start with -Dorg.apache.lucene.store.MMapDirectory.enableMemorySegments=false
